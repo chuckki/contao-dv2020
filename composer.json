@@ -1,0 +1,26 @@
+{
+    "type": "project",
+    "require": {
+        "contao/comments-bundle": "4.9.*",
+        "contao/conflicts": "*@dev",
+        "contao/manager-bundle": "4.9.*",
+        "contao/news-bundle": "4.9.*",
+        "terminal42/contao-easy_themes": "^2.2"
+    },
+    "extra": {
+        "contao-component-dir": "assets"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Contao\\ManagerBundle\\Composer\\ScriptHandler::initializeApplication"
+        ],
+        "post-update-cmd": [
+            "Contao\\ManagerBundle\\Composer\\ScriptHandler::initializeApplication"
+        ]
+    }
+}
