@@ -82,6 +82,8 @@
 
 <p class="mt-5 mb-3 text-muted text-center">&copy; 2020 Dennis Esken | <a
       href="/datenschutz">Datenschutz</a>
+
+
 </p>
 
 <?php $this->block('footer'); ?>
@@ -92,11 +94,9 @@
            </div>
          </footer>
        <?php endif; ?>
-     <?php $this->endblock(); ?>
+<?php $this->endblock(); ?>
 
-<?php
-//  dump($this)
-?>
+
 <?= $this->mootools ?>
 </body>
 </html>

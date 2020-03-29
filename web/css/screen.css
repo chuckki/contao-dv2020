@@ -111,4 +111,14 @@ body#top{
     float: right;
   }
 }
+.mod_customnav ul{
+    list-style: none;
+    padding: 0;
+}
+.mod_customnav li{
+    display: inline;
+}
+.mod_customnav li:not(.last):after {
+    content: " | ";
+}
 

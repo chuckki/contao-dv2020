@@ -1,12 +1,15 @@
 
 <!-- indexer::stop -->
-<div class="<?= $this->class ?> <?= $this->logout ? 'logout' : 'login' ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
+<div class="text-center <?= $this->class ?> <?= $this->logout ? 'logout' : 'login' ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
 
-  <?php if ($this->headline): ?>
-    <<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
-  <?php endif; ?>
+  <form<?php if ($this->action): ?> action="<?= $this->action ?>"<?php endif; ?> id="<?= $this->formId ?>" method="post" class="form-signin">
 
-  <form<?php if ($this->action): ?> action="<?= $this->action ?>"<?php endif; ?> id="<?= $this->formId ?>" method="post">
+
+            <a href="/"><img src="/img/uni_duesseldorf_logo.svg" class="img-responsive mb-4" alt="" width="250"
+                                               height="95"></a>
+            <h1 class="h3 mb-3 font-weight-normal">DV Seminar So2020</h1>
+
+
     <div class="formbody">
       <?php if ($this->message): ?>
         <p class="error"><?= $this->message ?></p>
@@ -28,14 +31,13 @@
           <label for="trusted"><?= $this->trans('MSC.twoFactorTrustDevice') ?></label>
         </div>
       <?php else: ?>
-        <div class="widget widget-text">
-          <label for="username"><?= $this->username ?></label>
-          <input type="text" name="username" id="username" class="text" value="<?= $this->value ?>" required>
-        </div>
-        <div class="widget widget-password">
-          <label for="password"><?= $this->password ?></label>
-          <input type="password" name="password" id="password" class="text password" value="" required>
-        </div>
+
+      <input type="email" placeholder="E-Mail" name="username" id="username"
+                   class="form-control" value="<?= $this->value ?>" required autofocus>
+
+      <input type="password" name="password" id="password" placeholder="Passwort" value="" class="text password form-control"
+       required>
+
         <?php if ($this->autologin): ?>
           <div class="widget widget-checkbox">
             <fieldset class="checkbox_container">
@@ -43,13 +45,11 @@
             </fieldset>
           </div>
         <?php endif; ?>
+
       <?php endif; ?>
-      <div class="widget widget-submit">
-        <button type="submit" class="submit"><?= $this->slabel ?></button>
-        <?php if ($this->twoFactorEnabled): ?>
-          <a href="<?= $this->route('contao_frontend_logout') ?>"><?= $this->cancel ?> ›</a>
-        <?php endif; ?>
-      </div>
+
+      <button class="btn btn-lg btn-primary submit" type="submit"><?= $this->slabel ?></button>
+
     </div>
   </form>
 

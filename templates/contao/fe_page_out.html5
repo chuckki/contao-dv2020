@@ -46,23 +46,17 @@
 </main>
 <?php $this->endblock(); ?>
 
-<p class="mt-5 mb-3 text-muted text-center">&copy; 2020 Dennis Esken | <a
-      href="/datenschutz">Datenschutz</a>
-</p>
 
 <?php $this->block('footer'); ?>
        <?php if ($this->footer): ?>
-         <footer id="footer">
-           <div class="inside">
              <?= $this->footer ?>
-           </div>
-         </footer>
        <?php endif; ?>
-     <?php $this->endblock(); ?>
+<?php $this->endblock(); ?>
+<p class="mt-5 mb-3 text-muted text-center">
+  &copy; {{date::Y}} Dennis Esken
+</p>
 
-<?php
-//  dump($this)
-?>
+
 <?= $this->mootools ?>
 </body>
 </html>

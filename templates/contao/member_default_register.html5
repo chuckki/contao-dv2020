@@ -1,0 +1,53 @@
+<!-- indexer::stop -->
+<div
+    class="<?= $this->class ?> block text-center"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
+
+    <?php if ($this->headline): ?>
+  <<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+<?php endif; ?>
+
+<?php if ($this->message): ?>
+  <p class="tl_confirm"><?= $this->message ?></p>
+<?php endif; ?>
+
+<form id="<?= $this->formId ?>" class="from-register" method="post" enctype="<?= $this->enctype ?>">
+  <div class="formbody">
+
+    <a href="/"><img src="/img/uni_duesseldorf_logo.svg" class="img-responsive mb-4" alt="" width="250"
+                     height="95"></a>
+    <h1 class="h3 mb-3 font-weight-normal">Registrierung</h1>
+
+    <input type="hidden" name="FORM_SUBMIT" value="<?= $this->formId ?>">
+    <input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+
+
+    <div class="form-group">
+      <input type="email" id="registration_form_email" name="registration_form[email]" required="required"
+             placeholder="E-Mail-Adresse" autofocus="autofocus" class="form-control" maxlength="64">
+    </div>
+
+
+    <div class="form-group">
+      <label for="registration_form_password_first" class="required">Wählen Sie ein Passwort.
+        Nutzen Sie auf gar keinen Fall Ihr Uni-Passwort.</label>
+      <input type="password" name="password" id="ctrl_password_5" class="form-control text password mandatory" value=""
+             required placeholder="Passwort" >
+    </div>
+
+    <div class="form-group">
+      <input type="password" name="password_confirm" id="ctrl_password_5_confirm"
+             class="form-control text password mandatory"
+             value="" required placeholder="Passwort wiederholen" >
+    </div>
+
+  </div>
+     <div class="fields">
+       <?= $this->fields ?>
+     </div>
+  <button class="btn btn-lg btn-primary submit" type="submit"><?= $this->slabel ?></button>
+
+  </div>
+</form>
+
+</div>
+<!-- indexer::continue -->
