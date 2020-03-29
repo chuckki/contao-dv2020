@@ -61,7 +61,7 @@
      <?php $this->endblock(); ?>
 
 <?php
-  dump($this)
+//  dump($this)
 ?>
 <?= $this->mootools ?>
 </body>
