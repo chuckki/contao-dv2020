@@ -29,7 +29,7 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="app_register_index")
+     * @Route("/registierung.html", name="app_register_index")
      * @throws \Exception
      */
     public function registerAction(Request $request, EncoderFactoryInterface $encoderFactory): Response

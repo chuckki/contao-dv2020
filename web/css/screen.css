@@ -3,22 +3,25 @@ body {
     height: 100%;
     background-color: #f5f5f5;
 }
-body#top{
-    padding-top: 5rem;
+
+body#top {
+    padding-top: 0;
 }
 
-    .starter-template {
-      padding: 3rem 1.5rem;
-      text-align: center;
+@media (min-width: 768px) {
+    body#top {
+        padding-top: 5rem;
     }
+}
+
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
 #userForm {
-    /*
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-*/
-    padding-top: 40px;
+    /*padding-top: 40px;*/
     padding-bottom: 40px;
 }
 
@@ -30,13 +33,13 @@ body#top{
     margin: auto;
 }
 
-.from-register label{
+.from-register label {
     font-size: 0.8rem;
     color: #999;
     text-align: left;
 }
 
-.invalid-feedback{
+.invalid-feedback {
     text-align: left;
 }
 
@@ -69,55 +72,63 @@ body#top{
 }
 
 
-
 /*
  * Header
  */
 .masthead {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 .masthead-brand {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .nav-masthead .nav-link {
-  padding: .25rem 0;
-  font-weight: 700;
-  color: rgba(255, 255, 255, .5);
-  background-color: transparent;
-  border-bottom: .25rem solid transparent;
+    padding: .25rem 0;
+    font-weight: 700;
+    color: rgba(255, 255, 255, .5);
+    background-color: transparent;
+    border-bottom: .25rem solid transparent;
 }
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, .25);
+    border-bottom-color: rgba(255, 255, 255, .25);
 }
 
 .nav-masthead .nav-link + .nav-link {
-  margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 .nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 @media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
+    .masthead-brand {
+        float: left;
+    }
+
+    .nav-masthead {
+        float: right;
+    }
 }
-.mod_customnav ul{
+
+.mod_customnav ul {
     list-style: none;
     padding: 0;
 }
-.mod_customnav li{
+
+.mod_customnav li {
     display: inline;
 }
+
 .mod_customnav li:not(.last):after {
     content: " | ";
 }

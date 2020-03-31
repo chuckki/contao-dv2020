@@ -37,25 +37,24 @@
     id="top"<?php if ($this->class): ?> class="<?= $this->class ?>"<?php endif; ?><?php if ($this->onload): ?> onload="<?= $this->onload ?>"<?php endif; ?>
     itemscope itemtype="https://schema.org/WebPage">
 
+<?php $this->insert('_logo.html'); ?>
 
 <?php $this->block('main'); ?>
 <main role="main" class="container">
     <?= $this->main ?>
-
     <?php $this->sections('main'); ?>
 </main>
 <?php $this->endblock(); ?>
 
 
-<?php $this->block('footer'); ?>
-       <?php if ($this->footer): ?>
-             <?= $this->footer ?>
-       <?php endif; ?>
-<?php $this->endblock(); ?>
-<p class="mt-5 mb-3 text-muted text-center">
+<div class="mb-3 text-muted text-center ">
+    <?php $this->block('footer'); ?>
+    <?php if ($this->footer): ?>
+        <?= $this->footer ?>
+    <?php endif; ?>
+    <?php $this->endblock(); ?>
   &copy; {{date::Y}} Dennis Esken
-</p>
-
+</div>
 
 <?= $this->mootools ?>
 </body>

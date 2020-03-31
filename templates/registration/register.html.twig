@@ -4,12 +4,14 @@
 {% block navi %}{% endblock %}
 {% form_theme registrationForm 'bootstrap_4_layout.html.twig' %}
 {% block body %}
+
+    {% include 'contao/_logo.html.html5' %}
+
+    <h1 class="h3 mb-3 font-weight-normal text-center">Registrierung</h1>
+
     <div class="text-center" id="userForm">
 
         {{ form_start(registrationForm,  {'attr': {'class': 'from-register'}}) }}
-        <a href="{{ path('app_index') }}"><img src="{{ asset('img/uni_duesseldorf_logo.svg') }}" class="img-responsive mb-4" alt="" width="250"
-                                           height="95"></a>
-        <h1 class="h3 mb-3 font-weight-normal">Registrierung</h1>
 
         {{ form_row(registrationForm.email, {'attr': {'autofocus': 'autofocus'}}) }}
         {{ form_row(registrationForm.password.first) }}
@@ -17,5 +19,24 @@
         {{ form_row(registrationForm.agreeTerms) }}
         <button class="btn btn-lg btn-primary" type="submit">Registrieren</button>
         {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div class="mb-3 text-muted text-center ">
+        <nav class="mod_customnav mb-3 text-muted text-center block" itemscope=""
+             itemtype="http://schema.org/SiteNavigationElement">
+            <ul>
+                <li><a href="/login.html" title="Login" itemprop="url"><span
+                                itemprop="name">Login</span></a></li>
+                <li><a href="passwort-vergessen.html" title="Passwort vergessen" itemprop="url"><span itemprop="name">Passwort vergessen</span></a>
+                </li>
+                <li><a href="datenschutz.html" title="Datenschutz" itemprop="url"><span
+                                itemprop="name">Datenschutz</span></a></li>
+                <li class="last"><a href="impressum.html" title="Impressum" class="last" itemprop="url"><span
+                                itemprop="name">Impressum</span></a></li>
+            </ul>
+        </nav>
+        &copy; {{ "now"|date("Y") }} Dennis Esken
     </div>
 {% endblock %}

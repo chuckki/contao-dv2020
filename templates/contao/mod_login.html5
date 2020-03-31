@@ -2,14 +2,9 @@
 <!-- indexer::stop -->
 <div class="text-center <?= $this->class ?> <?= $this->logout ? 'logout' : 'login' ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
 
+  <h1 class="h3 mb-3 font-weight-normal">DV Seminar So2020</h1>
+
   <form<?php if ($this->action): ?> action="<?= $this->action ?>"<?php endif; ?> id="<?= $this->formId ?>" method="post" class="form-signin">
-
-
-            <a href="/"><img src="/img/uni_duesseldorf_logo.svg" class="img-responsive mb-4" alt="" width="250"
-                                               height="95"></a>
-            <h1 class="h3 mb-3 font-weight-normal">DV Seminar So2020</h1>
-
-
     <div class="formbody">
       <?php if ($this->message): ?>
         <p class="error"><?= $this->message ?></p>
