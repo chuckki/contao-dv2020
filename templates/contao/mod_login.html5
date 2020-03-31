@@ -40,11 +40,13 @@
             </fieldset>
           </div>
         <?php endif; ?>
-
       <?php endif; ?>
-
+      <div class="widget widget-submit">
       <button class="btn btn-lg btn-primary submit" type="submit"><?= $this->slabel ?></button>
-
+        <?php if ($this->twoFactorEnabled): ?>
+          <a href="<?= $this->route('contao_frontend_logout') ?>"><?= $this->cancel ?> ›</a>
+        <?php endif; ?>
+      </div>
     </div>
   </form>
 
