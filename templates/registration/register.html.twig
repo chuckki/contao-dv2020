@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+{% block navi %}{% endblock %}
+{% form_theme registrationForm 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <div class="text-center" id="userForm">
+
+        {{ form_start(registrationForm,  {'attr': {'class': 'from-register'}}) }}
+        <a href="{{ path('app_index') }}"><img src="{{ asset('img/uni_duesseldorf_logo.svg') }}" class="img-responsive mb-4" alt="" width="250"
+                                           height="95"></a>
+        <h1 class="h3 mb-3 font-weight-normal">Registrierung</h1>
+
+        {{ form_row(registrationForm.email, {'attr': {'autofocus': 'autofocus'}}) }}
+        {{ form_row(registrationForm.password.first) }}
+        {{ form_row(registrationForm.password.second) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+        <button class="btn btn-lg btn-primary" type="submit">Registrieren</button>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
