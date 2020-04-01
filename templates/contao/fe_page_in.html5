@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-ico; charset=binary"/>
   <link rel="icon" href="/img/favicon.ico" type="image/x-ico; charset=binary"/>
+    <script src="https://kit.fontawesome.com/0461a9f8e7.js" crossorigin="anonymous"></script>
 
     <?= $this->framework ?>
     <?= $this->stylesheets ?>
@@ -52,6 +53,17 @@
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Seminarinhalte</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown09">
+            {{insert_module::12}}
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+
+          </div>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>

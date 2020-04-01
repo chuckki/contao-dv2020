@@ -11,23 +11,16 @@
 
     <link rel="canonical"
           href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
-
+    <script src="https://kit.fontawesome.com/0461a9f8e7.js" crossorigin="anonymous"></script>
 
     {% block head_css %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
               crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/cookie.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/screen.css') }}">
     {% endblock %}
     {% block stylesheets %}
-        <style>
-
-            .starter-template {
-                padding: 3rem 1.5rem;
-                text-align: center;
-            }
-        </style>
-        <link rel="stylesheet" href="{{ asset('css/screen.css') }}">
     {% endblock %}
 
     {% block head_js %}
@@ -50,7 +43,7 @@
 </head>
 
 
-<body id="top">
+<body id="top" class="out">
 
 {% for label, messages in app.flashes %}
     {% for message in messages %}

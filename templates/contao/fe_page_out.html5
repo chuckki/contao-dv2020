@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-ico; charset=binary"/>
   <link rel="icon" href="/img/favicon.ico" type="image/x-ico; charset=binary"/>
+    <script src="https://kit.fontawesome.com/0461a9f8e7.js" crossorigin="anonymous"></script>
 
     <?= $this->framework ?>
     <?= $this->stylesheets ?>
@@ -57,5 +58,31 @@
 </div>
 
 <?= $this->mootools ?>
+
+    <script>
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#006ab3",
+                    "text": "#eeeeee"
+                },
+                "button": {
+                    "background": "#fff",
+                    "text": "#006ab3"
+                }
+            },
+            "cookie": {
+                "expiryDays": <?php echo date_diff(date_create('2020-07-18'), date_create())->format('%R%a '); ?>,
+            },
+            "theme": "classic",
+            "content": {
+                "message": "Diese Webseite benutzt Cookies. Für mehr Informationen:",
+                "dismiss": "Einverstanden",
+                "link": "Datenschutz",
+                "href": "datenschutz.html"
+            }
+        });
+    </script>
+
 </body>
 </html>

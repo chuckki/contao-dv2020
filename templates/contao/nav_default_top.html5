@@ -1,0 +1,15 @@
+
+<?php foreach ($this->items as $key => $item): ?>
+
+    <?php if ($item['isActive']): ?>
+
+    <strong class="dropdown-item <?= $item['class'] ?>"<?php if (!empty($item['subitems'])): ?> aria-haspopup="true"<?php endif; ?> itemprop="name"><?= $item['link'] ?></strong><?= $item['subitems'] ?>
+
+    <?php else: ?>
+
+
+  <a href="<?= $item['href'] ?: './' ?>" title="<?= $item['pageTitle'] ?: $item['title'] ?>"<?php if ($item['class']): ?> class="dropdown-item <?= $item['class'] ?>"<?php endif; ?><?php if ('' !== $item['accesskey']): ?> accesskey="<?= $item['accesskey'] ?>"<?php endif; ?><?php if ($item['tabindex']): ?> tabindex="<?= $item['tabindex'] ?>"<?php endif; ?><?= $item['target'] ?><?= $item['rel'] ?><?php if (!empty($item['subitems'])): ?> aria-haspopup="true"<?php endif; ?> itemprop="url"><span itemprop="name"><?= $item['link'] ?></span></a><?= $item['subitems'] ?>
+
+    <?php endif; ?>
+
+  <?php endforeach; ?>

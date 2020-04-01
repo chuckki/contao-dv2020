@@ -1,0 +1,30 @@
+
+<div class="jumbotron layout_latest arc_<?= $this->archive->id ?> block<?= $this->class ?>" itemscope itemtype="http://schema.org/Article">
+
+  <?php if ($this->hasMetaFields): ?>
+    <p class="info"><time datetime="<?= $this->datetime ?>" itemprop="datePublished"><?= $this->date ?></time> <?= $this->author ?> <?= $this->commentCount ?></p>
+  <?php endif; ?>
+<?php
+      if(0){
+        echo "<pre>";
+        echo $this->showTemplateVars();
+        echo "</pre>";
+        die;
+      }
+    ?>
+
+  <?php if ($this->addImage): ?>
+    <?php $this->insert('image', $this->arrData); ?>
+  <?php endif; ?>
+
+  <h2 itemprop="name"><?= $this->headline ?></h2>
+
+  <div class="ce_text block" itemprop="description">
+    <?= $this->teaser ?>
+  </div>
+
+  <?php if ($this->hasText): ?>
+    <p class="more"><?= $this->more ?></p>
+  <?php endif; ?>
+
+</div>
