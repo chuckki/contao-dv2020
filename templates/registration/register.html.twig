@@ -14,6 +14,7 @@
         {{ form_start(registrationForm,  {'attr': {'class': 'from-register'}}) }}
 
         {{ form_row(registrationForm.email, {'attr': {'autofocus': 'autofocus'}}) }}
+        <label for="registration_form_password_first" class="required alert alert-danger text-black-50"><b>Nutzen Sie auf gar keinen Fall Ihr Uni-Passwort.</b></label>
         {{ form_row(registrationForm.password.first) }}
         {{ form_row(registrationForm.password.second) }}
         {{ form_row(registrationForm.agreeTerms) }}

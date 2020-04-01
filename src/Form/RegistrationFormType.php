@@ -55,7 +55,7 @@ class RegistrationFormType extends AbstractType
                 'options'         => ['attr' => ['class' => 'password-field']],
                 'required'        => true,
                 'first_options'   => [
-                    'label' => 'Wählen Sie ein Passwort. Nutzen Sie auf gar keinen Fall Ihr Uni-Passwort.',
+                    'label' => false,
                     'attr'  => ['placeholder' => 'Passwort'],
                 ],
                 'second_options'  => [
