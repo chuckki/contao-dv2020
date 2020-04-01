@@ -99,7 +99,7 @@ class RegistrationController extends AbstractController
         $preMail = explode('.', $first[0]);
         $cname   = '';
         foreach ($preMail as $mailPart) {
-            $cname .= mb_strtoupper(substr($mailPart, 0, 1)).'. ';
+            $cname .= mb_strtoupper(substr($mailPart, 0, 1)).'.';
         }
 
         return $cname;
