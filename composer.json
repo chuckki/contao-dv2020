@@ -1,7 +1,6 @@
 {
     "type": "project",
     "require": {
-        "contao/comments-bundle": "4.9.*",
         "contao/conflicts": "*@dev",
         "contao/manager-bundle": "4.9.*",
         "contao/news-bundle": "4.9.*",
@@ -10,15 +9,32 @@
         "symfony/mailer": "^5.0",
         "symfony/validator": "^5.0",
         "terminal42/contao-easy_themes": "^2.2",
-        "terminal42/notification_center": "^1.5"
+        "terminal42/notification_center": "^1.5",
+        "chuckki/symfony-comments": "dev-master"
     },
     "extra": {
         "contao-component-dir": "assets"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:chuckki/symfony-comments.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "src/"
         }
+    },
+    "config": {
+        "preferred-install": {
+            "chuckki/*": "source",
+            "*": "dist"
+        },
+        "platform": {
+            "php": "7.4"
+        },
+        "sort-packages": true
     },
     "scripts": {
         "post-install-cmd": [
