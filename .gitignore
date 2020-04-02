@@ -55,7 +55,7 @@
 
 ###> contao/core-bundle ###
 /assets/
-/files/
+/files/video
 /public/assets
 /public/files/
 /public/share/
