@@ -178,7 +178,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:chuckki/symfony-comments.git",
-                "reference": "93b49a8106a8785bdfb6f177afc76765e553fac8"
+                "reference": "d32631ddf1c569582da76f82b713d6380fd11c24"
             },
             "require": {
                 "contao/core-bundle": "4.9.*",
@@ -215,7 +215,7 @@
                     "src/Resources/contao/templates/"
                 ]
             },
-            "time": "2020-03-24T18:06:16+00:00"
+            "time": "2020-04-02T09:40:35+00:00"
         },
         {
             "name": "clue/stream-filter",
@@ -1063,16 +1063,16 @@
         },
         {
             "name": "contao/core-bundle",
-            "version": "4.9.1",
+            "version": "4.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contao/core-bundle.git",
-                "reference": "ed96b041a2d5f98002a9f642ab6b037bf2c774e6"
+                "reference": "550ebab085dbd018bcc84dd7e2e976955fd0463b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contao/core-bundle/zipball/ed96b041a2d5f98002a9f642ab6b037bf2c774e6",
-                "reference": "ed96b041a2d5f98002a9f642ab6b037bf2c774e6",
+                "url": "https://api.github.com/repos/contao/core-bundle/zipball/550ebab085dbd018bcc84dd7e2e976955fd0463b",
+                "reference": "550ebab085dbd018bcc84dd7e2e976955fd0463b",
                 "shasum": ""
             },
             "require": {
@@ -1171,6 +1171,7 @@
                 "contao/core": "*",
                 "contao/manager-bundle": "4.5.* <4.5.2",
                 "contao/manager-plugin": "<2.0 || >=3.0",
+                "symfony/security-bundle": "4.4.* <4.4.5",
                 "terminal42/contao-ce-access": "<3.0"
             },
             "require-dev": {
@@ -1233,7 +1234,7 @@
             ],
             "description": "Provides the Contao core functionality",
             "homepage": "https://contao.org",
-            "time": "2020-02-27T13:37:10+00:00"
+            "time": "2020-04-02T12:40:26+00:00"
         },
         {
             "name": "contao/image",
@@ -1347,16 +1348,16 @@
         },
         {
             "name": "contao/installation-bundle",
-            "version": "4.9.1",
+            "version": "4.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contao/installation-bundle.git",
-                "reference": "228cddbfc82fde4554857a859c5199cd95c98964"
+                "reference": "8721ff85037432bbcb9a04a88171c5213201f4e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contao/installation-bundle/zipball/228cddbfc82fde4554857a859c5199cd95c98964",
-                "reference": "228cddbfc82fde4554857a859c5199cd95c98964",
+                "url": "https://api.github.com/repos/contao/installation-bundle/zipball/8721ff85037432bbcb9a04a88171c5213201f4e5",
+                "reference": "8721ff85037432bbcb9a04a88171c5213201f4e5",
                 "shasum": ""
             },
             "require": {
@@ -1416,20 +1417,20 @@
             ],
             "description": "Required to install and update Contao",
             "homepage": "https://contao.org",
-            "time": "2020-02-27T13:37:10+00:00"
+            "time": "2020-04-02T12:40:26+00:00"
         },
         {
             "name": "contao/manager-bundle",
-            "version": "4.9.1",
+            "version": "4.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contao/manager-bundle.git",
-                "reference": "aa2bb59a4ff8cda8e42cb93cebd3be6250b1a0c2"
+                "reference": "de1cbc5124d61031bfff16c699de3432be367ad7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contao/manager-bundle/zipball/aa2bb59a4ff8cda8e42cb93cebd3be6250b1a0c2",
-                "reference": "aa2bb59a4ff8cda8e42cb93cebd3be6250b1a0c2",
+                "url": "https://api.github.com/repos/contao/manager-bundle/zipball/de1cbc5124d61031bfff16c699de3432be367ad7",
+                "reference": "de1cbc5124d61031bfff16c699de3432be367ad7",
                 "shasum": ""
             },
             "require": {
@@ -1475,7 +1476,8 @@
                 "toflar/psr6-symfony-http-cache-store": "^2.1"
             },
             "conflict": {
-                "symfony/config": "<4.4.2"
+                "symfony/config": "<4.4.2",
+                "symfony/security-bundle": "4.4.* <4.4.5"
             },
             "require-dev": {
                 "composer/composer": "^1.0",
@@ -1517,7 +1519,7 @@
             ],
             "description": "Symfony bundle for the Contao Managed Edition",
             "homepage": "https://contao.org",
-            "time": "2020-02-27T13:37:10+00:00"
+            "time": "2020-04-02T12:40:26+00:00"
         },
         {
             "name": "contao/manager-plugin",
@@ -1580,16 +1582,16 @@
         },
         {
             "name": "contao/news-bundle",
-            "version": "4.9.1",
+            "version": "4.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contao/news-bundle.git",
-                "reference": "ebd503e2a966c2ecb4d26bda15048ab76e9bf4e0"
+                "reference": "ed78fc252bbef4299b3b5b6ce270714352aab6da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contao/news-bundle/zipball/ebd503e2a966c2ecb4d26bda15048ab76e9bf4e0",
-                "reference": "ebd503e2a966c2ecb4d26bda15048ab76e9bf4e0",
+                "url": "https://api.github.com/repos/contao/news-bundle/zipball/ed78fc252bbef4299b3b5b6ce270714352aab6da",
+                "reference": "ed78fc252bbef4299b3b5b6ce270714352aab6da",
                 "shasum": ""
             },
             "require": {
@@ -1651,7 +1653,7 @@
             ],
             "description": "Adds news functionality to Contao",
             "homepage": "https://contao.org",
-            "time": "2020-02-27T13:37:10+00:00"
+            "time": "2020-04-02T12:40:26+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -1697,20 +1699,21 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.8.0",
+            "version": "1.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "904dca4eb10715b92569fbcd79e201d5c349b6bc"
+                "reference": "5eb79f3dbdffed6544e1fc287572c0f462bd29bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/904dca4eb10715b92569fbcd79e201d5c349b6bc",
-                "reference": "904dca4eb10715b92569fbcd79e201d5c349b6bc",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/5eb79f3dbdffed6544e1fc287572c0f462bd29bb",
+                "reference": "5eb79f3dbdffed6544e1fc287572c0f462bd29bb",
                 "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "1.*",
+                "ext-tokenizer": "*",
                 "php": "^7.1"
             },
             "require-dev": {
@@ -1720,7 +1723,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.x-dev"
+                    "dev-master": "1.9.x-dev"
                 }
             },
             "autoload": {
@@ -1761,7 +1764,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2019-10-01T18:55:10+00:00"
+            "time": "2020-04-02T12:33:25+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -5760,16 +5763,16 @@
         },
         {
             "name": "scssphp/scssphp",
-            "version": "1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/scssphp/scssphp.git",
-                "reference": "20d661952d19d4d75508180c453a594423b4f10b"
+                "reference": "c6626eebae7b123321d5ea803998487d835c260d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scssphp/scssphp/zipball/20d661952d19d4d75508180c453a594423b4f10b",
-                "reference": "20d661952d19d4d75508180c453a594423b4f10b",
+                "url": "https://api.github.com/repos/scssphp/scssphp/zipball/c6626eebae7b123321d5ea803998487d835c260d",
+                "reference": "c6626eebae7b123321d5ea803998487d835c260d",
                 "shasum": ""
             },
             "require": {
@@ -5817,7 +5820,7 @@
                 "scss",
                 "stylesheet"
             ],
-            "time": "2020-02-20T16:44:03+00:00"
+            "time": "2020-04-01T15:23:18+00:00"
         },
         {
             "name": "sensiolabs/ansi-to-html",
