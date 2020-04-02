@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66ba1e1fdfabb83003c7e3845208e6a0",
+    "content-hash": "c4caf27987134204f5a531a5fdfd1a99",
     "packages": [
         {
             "name": "ausi/slug-generator",
@@ -3066,6 +3066,58 @@
                 "varnish"
             ],
             "time": "2019-11-28T13:01:58+00:00"
+        },
+        {
+            "name": "fritzmg/contao-file-access",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fritzmg/contao-file-access.git",
+                "reference": "3b02124d67cc5577f220bcf80210c97ab957867f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fritzmg/contao-file-access/zipball/3b02124d67cc5577f220bcf80210c97ab957867f",
+                "reference": "3b02124d67cc5577f220bcf80210c97ab957867f",
+                "shasum": ""
+            },
+            "require": {
+                "contao/core-bundle": "^4.4",
+                "php": ">=7.1",
+                "symfony/config": "^3.2 || ^4.0",
+                "symfony/dependency-injection": "^3.2 || ^4.0",
+                "symfony/http-foundation": "^3.2 || ^4.0",
+                "symfony/http-kernel": "^3.2 || ^4.0"
+            },
+            "type": "contao-bundle",
+            "extra": {
+                "contao-manager-plugin": "InspiredMinds\\ContaoFileAccessBundle\\ContaoManagerPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "InspiredMinds\\ContaoFileAccessBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Fritz Michael Gschwantner",
+                    "email": "fmg@inspiredminds.at",
+                    "homepage": "http://www.inspiredminds.at",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Contao extension that allows file access restrictions for frontend users.",
+            "keywords": [
+                "access",
+                "contao",
+                "files",
+                "protected"
+            ],
+            "time": "2019-04-12T06:57:48+00:00"
         },
         {
             "name": "imagine/imagine",
@@ -10884,14 +10936,11 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "contao/conflicts": 20,
-        "chuckki/symfony-comments": 20
+        "chuckki/symfony-comments": 20,
+        "contao/conflicts": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": [],
-    "platform-overrides": {
-        "php": "7.4"
-    }
+    "platform-dev": []
 }
