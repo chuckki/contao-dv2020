@@ -1,15 +1,60 @@
 
-<?php foreach ($this->items as $key => $item): ?>
 
-    <?php if ($item['isActive']): ?>
-
-    <strong class="dropdown-item <?= $item['class'] ?>"<?php if (!empty($item['subitems'])): ?> aria-haspopup="true"<?php endif; ?> itemprop="name"><?= $item['link'] ?></strong><?= $item['subitems'] ?>
-
-    <?php else: ?>
+<?php if ('level_1' === $this->level): ?>
 
 
-  <a href="<?= $item['href'] ?: './' ?>" title="<?= $item['pageTitle'] ?: $item['title'] ?>"<?php if ($item['class']): ?> class="dropdown-item <?= $item['class'] ?>"<?php endif; ?><?php if ('' !== $item['accesskey']): ?> accesskey="<?= $item['accesskey'] ?>"<?php endif; ?><?php if ($item['tabindex']): ?> tabindex="<?= $item['tabindex'] ?>"<?php endif; ?><?= $item['target'] ?><?= $item['rel'] ?><?php if (!empty($item['subitems'])): ?> aria-haspopup="true"<?php endif; ?> itemprop="url"><span itemprop="name"><?= $item['link'] ?></span></a><?= $item['subitems'] ?>
+<ul class="<?= $this->level ?> navbar-nav mr-auto">
 
-    <?php endif; ?>
+    <?php foreach ($this->items as $item): ?>
 
-  <?php endforeach; ?>
+
+        <?php if (!empty($item['subitems'])): ?>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <?= $item['link'] ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <?= $item['subitems'] ?>
+            </div>
+          </li>
+
+        <?php elseif ($item['isActive']): ?>
+          <li class="nav-item <?= $item['class'] ?>">
+            <a class="nav-link <?= $item['class'] ?>"<?php if (!empty($item['subitems'])): ?> aria-haspopup="true"<?php endif; ?> itemprop="name"><?= $item['link'] ?><span class="sr-only">(current)</span></a>
+          </li>
+
+        <?php else: ?>
+
+          <li class="nav-item <?= $item['class'] ?>">
+            <a<?php if (!empty($item['subitems'])): ?> aria-haspopup="true"<?php endif; ?> href="<?= $item['href'] ?: './' ?>" title="<?= $item['pageTitle'] ?: $item['title'] ?>" class="nav-link <?= $item['class'] ?>" <?= $item['target'] ?><?= $item['rel'] ?> itemprop="url">
+              <span itemprop="name"><?= $item['link'] ?></span>
+            </a>
+
+          </li>
+
+        <?php endif; ?>
+    <?php endforeach; ?>
+
+</ul>
+
+<?php else: ?>
+
+
+    <?php foreach ($this->items as $item): ?>
+
+            <a<?php if (!empty($item['subitems'])): ?> aria-haspopup="true"<?php endif; ?> href="<?= $item['href'] ?: './' ?>" title="<?= $item['pageTitle'] ?: $item['title'] ?>" class="dropdown-item <?= $item['class'] ?>" <?= $item['target'] ?><?= $item['rel'] ?> itemprop="url">
+              <span itemprop="name"><?= $item['link'] ?></span>
+            </a>
+
+
+    <?php endforeach; ?>
+
+<?php endif; ?>
+
+<?php /*
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+
+ */ ?>

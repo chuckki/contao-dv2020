@@ -9,3 +9,4 @@
 
   <?php endforeach; ?>
 </ul>
+<p class="mb-3 text-muted text-center">&copy; 2020 Dennis Esken</p>
