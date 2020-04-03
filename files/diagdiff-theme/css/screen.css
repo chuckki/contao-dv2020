@@ -123,3 +123,71 @@ img {
     content: " | ";
 }
 
+.jumbotron {
+    padding: 3rem 2rem;
+}
+
+/** comments **/
+
+.comment_default {
+	margin-bottom: 20px;
+    padding: 10px 20px 20px;
+    background: white;
+    border-radius: 15px;
+}
+
+.ce_comments .widget-textarea label,
+.ce_comments p.info {
+	margin: 0;
+	padding: 5px;
+	font-weight: bold;
+	color: #0069d9;
+}
+
+.ce_comments .comment {
+	margin: 0;
+	padding: 0 5px;
+}
+
+.ce_comments .reply {
+	margin: 10px 0 0 30px;
+	padding: 5px 10px;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+}
+
+.ce_comments .reply p.info {
+	background: transparent
+}
+
+.ce_comments .form {
+    margin: 30px;
+    background: #e9ecef;
+    padding: 10px 30px 20px;
+    border-radius: 15px;
+}
+
+.ce_comments .widget-textarea{
+    display: flex;
+    flex-direction: column;
+}
+
+.ce_comments .widget-checkbox{
+    display: none;
+}
+
+.ce_comments .widget-submit {
+	margin-top: 1.5em
+}
+
+.ce_comments .text {
+	display: inline-block;
+	width: 29%;
+	margin-right: 1%
+}
+
+.ce_comments .formbody label {
+	display: inline-block;
+	width: 40%;
+	margin-top: 0
+}
