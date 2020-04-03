@@ -24,7 +24,8 @@
   </div>
 
   <?php if ($this->hasText): ?>
-    <p class="more"><?= $this->more ?></p>
+  <a class="btn btn-primary btn-lg" href="<?= $this->link ?>" role="button"><?= $this->moreLabel ?></a>
+
   <?php endif; ?>
 
 </div>
