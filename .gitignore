@@ -79,3 +79,4 @@
 ###< symfony/framework-bundle ###
 
 wwwRoot
+web
