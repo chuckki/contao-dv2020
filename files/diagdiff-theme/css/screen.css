@@ -127,6 +127,22 @@ img {
     padding: 3rem 2rem;
 }
 
+/** elements **/
+.ce_player{
+    margin-bottom: 2rem;
+}
+
+.mod_closeAccount,
+.mod_personalData,
+.ce_text,
+.ce_downloads{
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}
+
+
 /** comments **/
 
 .comment_default {
