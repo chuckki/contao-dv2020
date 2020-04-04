@@ -55,7 +55,6 @@
 
 ###> contao/core-bundle ###
 /assets/
-/files/video
 /public/assets
 /public/files/
 /public/share/
@@ -80,3 +79,5 @@
 
 wwwRoot
 web
+/files/*
+!/files/diagdiff-theme/
