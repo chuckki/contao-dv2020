@@ -4,9 +4,13 @@ namespace App\Controller;
 
 use App\Form\RegistrationFormType;
 use App\Services\MailManager;
+use Contao\Config;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\OptIn\OptIn;
+use Contao\Email;
+use Contao\Environment;
 use Contao\FrontendUser;
+use Contao\Idna;
 use Contao\MemberModel;
 use Contao\System;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -144,6 +148,14 @@ class RegistrationController extends AbstractController
         }
         $objMember->disable = '';
         $objMember->save();
+
+        $objEmail = new Email();
+        $objEmail->from = Config::get('adminEmail');
+        $objEmail->fromName = Config::get('adminEmail');
+        $objEmail->subject = "Neue Registrierung auf: " . Idna::decode(Environment::get('host'));
+        $objEmail->text = "Neu Registrierung auf " . Idna::decode(Environment::get('host')) . "\n\nvon: " . $objMember->email;
+        $objEmail->sendTo(Config::get('adminEmail'));
+
         $this->addFlash($msgType, $msg);
 
         return $this->redirect('/');
