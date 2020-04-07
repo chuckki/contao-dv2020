@@ -9,6 +9,7 @@
           <?php foreach ($this->files as $file): ?>
             <source type="<?= $file->mime ?>" src="<?= $file->path.$this->range ?>" title="<?= $file->title ?>">
           <?php endforeach; ?>
+        <track kind="captions" label="English" srclang="en" src="/video/caption" default />
       </video>
       <?php
       /* https://github.com/sampotts/plyr */
@@ -17,7 +18,13 @@
         ?>
 
       <script>
-          const player = new Plyr('#player');
+          const player = new Plyr('#player',
+              {
+                  captions:{ active: true, language: 'en', update: false },
+                  settings:['speed'],
+                  controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume','settings', 'pip', 'airplay', 'fullscreen']
+              }
+          );
       </script>
 
     <?php else: ?>
