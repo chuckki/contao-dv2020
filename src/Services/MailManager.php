@@ -25,7 +25,7 @@ class MailManager
         $reg_text = 'Vielen Dank für Ihre Registrierung auf '.$domain
                     .'. \n Bitte klicken Sie hier, um Ihre Registrierung abzuschließen und Ihr Konto zu aktivieren: '
                     .$absolutUrl
-                    .'\n\nDer Bestätigungslink ist 24 Stunden gültig.\n\nWenn Sie keinen Zugang angefordert haben, ignorieren Sie bitte diese E-Mail.';
+                    .' \n\nDer Bestätigungslink ist 24 Stunden gültig.\n\nWenn Sie keinen Zugang angefordert haben, ignorieren Sie bitte diese E-Mail.';
         $reg_html = '<p>Vielen Dank für Ihre Registrierung auf '.$domain
                     .'<br><br> Bitte klicken Sie hier, um Ihre Registrierung abzuschließen und Ihr Konto zu aktivieren: '
                     .'<a href="'.$absolutUrl.'">'.$absolutUrl.'</a>'
