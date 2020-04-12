@@ -136,10 +136,18 @@ img {
 .mod_personalData,
 .ce_text,
 .ce_downloads{
-    padding: 3rem 1rem;
+    padding: 3rem 2rem;
     margin-bottom: 2rem;
     background-color: #e9ecef;
     border-radius: .3rem;
+}
+
+.jumbotron .ce_text{
+    padding: 0;
+    margin: 0;
+}
+.jumbotron h3{
+    font-size: 1.5rem;
 }
 
 
