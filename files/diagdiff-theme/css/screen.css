@@ -142,10 +142,15 @@ img {
     border-radius: .3rem;
 }
 
-.jumbotron .ce_text{
+
+.jumbotron .mod_closeAccount,
+.jumbotron .mod_personalData,
+.jumbotron .ce_text,
+.jumbotron .ce_downloads{
     padding: 0;
     margin: 0;
 }
+
 .jumbotron h3{
     font-size: 1.5rem;
 }
@@ -214,4 +219,37 @@ img {
 	display: inline-block;
 	width: 40%;
 	margin-top: 0
+}
+
+/** news list **/
+
+.mod_newslist h2{
+	font-size:1.3rem;
+}
+.mod_newslist h3{
+	font-size:1.1rem;
+}
+.mod_newslist p.info{
+	font-size:0.8rem;
+	margin-bottom:0;
+}
+
+.container{
+    margin-bottom:50px;
+}
+
+.card-deck,
+.card{
+    margin-bottom: 30px;
+}
+
+.card-header{
+    background: #e9ecef;
+}
+.card-footer{
+    border: none;
+    background: inherit;
+}
+*{
+    hyphens: auto;
 }
