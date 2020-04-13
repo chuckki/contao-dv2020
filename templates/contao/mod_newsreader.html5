@@ -1,0 +1,15 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <?= $this->articles ?>
+
+  <?php if ($this->allowComments): ?>
+    <div class="ce_comments block">
+      <?= implode('', $this->comments) ?>
+      <?= $this->pagination ?>
+      <?php $this->insert('mod_comment_form', $this->arrData); ?>
+    </div>
+  <?php endif; ?>
+
+<?php $this->endblock(); ?>

@@ -1,0 +1,30 @@
+<?php $this->extend('block_unsearchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <?php if (empty($this->articles)): ?>
+    <p class="empty"><?= $this->empty ?></p>
+  <?php else: ?>
+
+
+      <?php $count = 0; ?>
+      <?php foreach ($this->articles as $article):?>
+
+      <?php if($count % 2 === 0): ?>
+      <div class="card-deck">
+      <?php endif; ?>
+
+      <?= $article ?>
+
+      <?php if($count % 2 === 1): ?>
+      </div>
+      <?php endif; ?>
+
+      <?php $count++; ?>
+      <?php endforeach; ?>
+
+
+    <?= $this->pagination ?>
+  <?php endif; ?>
+
+<?php $this->endblock(); ?>

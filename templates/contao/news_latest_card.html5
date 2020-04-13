@@ -1,0 +1,25 @@
+
+
+<div class="card layout_latest arc_<?= $this->archive->id ?> block<?= $this->class ?>" itemscope itemtype="http://schema.org/Article">
+  <h2 itemprop="name" class="card-header"><?= $this->headline ?></h2>
+
+  <div class="card-body">
+
+  <?php if ($this->hasMetaFields): ?>
+    <p class="info"><time datetime="<?= $this->datetime ?>" itemprop="datePublished"><?= $this->date ?></time> <?= $this->author ?> <?= $this->commentCount ?></p>
+  <?php endif; ?>
+
+  <?php if ($this->subheadline): ?>
+    <h3 itemprop="name" class="card-title"><?= $this->subheadline ?></h3>
+  <?php endif; ?>
+  <?= $this->teaser ?>
+  </div>
+  <div class="card-footer">
+  <?php if ($this->hasText): ?>
+  <a class="btn btn-primary" href="<?= $this->link ?>" role="button"><?= $this->moreLabel ?></a>
+  <?php endif; ?>
+  </div>
+</div>
+
+
+
