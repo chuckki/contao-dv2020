@@ -221,6 +221,15 @@ img {
 	margin-top: 0
 }
 
+.comment-form{
+    position: relative;
+}
+#comment-help{
+    position: absolute;
+    right: 0;
+}
+
+
 /** news list **/
 
 .mod_newslist h2{
