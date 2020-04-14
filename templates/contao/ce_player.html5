@@ -13,7 +13,7 @@
         Dieses Video darf weder gespeichert noch weiterverbreitet werden. Eine Verletzung des Uhrheberrechts, kann rechtliche Folgen für die jeweilige Person nach sich ziehen.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="player.play();" data-dismiss="modal">Einverstanden</button>
+        <button type="button" class="btn btn-primary" onclick="playCount++;player.play();" data-dismiss="modal">Einverstanden</button>
       </div>
     </div>
   </div>
@@ -48,7 +48,6 @@
               if(playCount === 0){
                   player.pause();
                   $('#copyright').modal();
-                  playCount++;
               }
           });
 
