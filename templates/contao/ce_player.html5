@@ -2,6 +2,23 @@
 
 <?php $this->block('content'); ?>
 
+<!-- Modal -->
+<div class="modal fade" id="copyright" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Urheberrecht</h5>
+      </div>
+      <div class="modal-body">
+        Dieses Video darf weder gespeichert noch weiterverbreitet werden. Eine Verletzung des Uhrheberrechts, kann rechtliche Folgen für die jeweilige Person nach sich ziehen.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="player.play();" data-dismiss="modal">Einverstanden</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <figure class="text-center <?= $this->containerClass ?>">
     <?php if ($this->isVideo): ?>
 
@@ -26,6 +43,15 @@
                   controls: ['play-large', 'play', 'progress','current-time', 'duration', 'mute', 'volume','settings', 'pip', 'airplay', 'fullscreen']
               }
           );
+          let playCount = 0;
+          player.on('play', event => {
+              if(playCount === 0){
+                  player.pause();
+                  $('#copyright').modal();
+                  playCount++;
+              }
+          });
+
       </script>
 
     <?php else: ?>
