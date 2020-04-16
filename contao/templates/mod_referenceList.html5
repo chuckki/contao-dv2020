@@ -1,0 +1,74 @@
+<h1>hier</h1>
+
+
+<br><br>
+<script>
+  /*
+$(document).ready(function(){
+  $(".inputFilter").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+
+*/
+</script>
+
+
+<script>
+function myFunction(myIndex,e) {
+
+    console.log(e.value);
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  //input = document.getElementById("myInput");
+  input = e;
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[myIndex];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+
+
+
+<table class="table table-striped" id="myTable">
+  <thead>
+  <tr>
+    <th><input class="inputFilter" onkeyup="myFunction(0,this)" type="text" placeholder="Search.."></th>
+    <th><input class="inputFilter" onkeyup="myFunction(1,this)" type="text" placeholder="Search.."></th>
+    <th><input class="inputFilter" onkeyup="myFunction(2,this)" type="text" placeholder="Search.."></th>
+  </tr>
+  <tr>
+    <th>Jahr</th>
+    <th>Autor</th>
+    <th>Titel</th>
+  </tr>
+  </thead>
+  <tbody id="myTable">
+<?php foreach ($this->userRow as $row): ?>
+  <tr>
+    <td><?= $row->ref_year ?></td>
+    <td><?= $row->ref_author ?></td>
+    <td><?= $row->ref_title ?></td>
+  </tr>
+
+<?php endforeach; ?>
+  </tbody>
+</table>
