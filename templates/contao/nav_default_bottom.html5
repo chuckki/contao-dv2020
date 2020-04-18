@@ -1,4 +1,4 @@
-<!-- hier -->
+
 <ul>
 <?php foreach ($this->items as $key => $item): ?>
 
