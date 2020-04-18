@@ -19,7 +19,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "git@github.com:chuckki/symfony-comments.git"
+            "url": "https://github.com/chuckki/symfony-comments"
         }
     ],
     "autoload": {
