@@ -36,12 +36,14 @@ class RegistrationFormType extends AbstractType
             'agreeTerms',
             CheckboxType::class,
             [
-                'label'       => 'Hiermit akzeptiere ich die Datenschutzbestimmung.',
-                'mapped'      => false,
+                'label'       => 'Die Datenschutzerklärung habe ich gelesen und akzeptiert.',
+                'mapped'    => false,
+                'help'      => '<div class="form-check text-left">Hier gehts zur <a target="_blank" href="...">Datenschutzerklärung</a>.</div>',
+                'help_html' => true,
                 'constraints' => [
                     new IsTrue(
                         [
-                            'message' => 'Sie sollten unseren Bedingungen zustimmen.',
+                            'message' => 'Ohne Ihre Zustimmung, kann keine Registierung erfolgen.',
                         ]
                     ),
                 ],
