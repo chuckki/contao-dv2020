@@ -1,0 +1,103 @@
+<h1>hier</h1>
+
+
+<br><br>
+<script>
+    /*
+  $(document).ready(function(){
+    $(".inputFilter").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+
+
+  */
+</script>
+<form>
+<div class="table-responsive">
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>Jahr</th>
+    <th>Erstautor</th>
+    <th>Titel</th>
+  </tr>
+  <tr>
+    <th><input class="form-control" id="filter_year" onkeyup="myFunction()" type="number" placeholder="Jahr"  size="4" max="2020" min="1920"></th>
+    <th><input class="form-control" id="filter_author" onkeyup="myFunction()" type="text" placeholder="Autor"></th>
+    <th><input class="form-control" id="filter_title" onkeyup="myFunction()" type="text" placeholder="Titel"></th>
+  </tr>
+  </thead>
+  <tbody id="myTable">
+  <?php foreach ($this->userRow as $row): ?>
+    <tr>
+      <td><?= $row->ref_year ?></td>
+      <td><?= $row->ref_author ?></td>
+      <td><?= $row->ref_title ?></td>
+    </tr>
+
+  <?php endforeach; ?>
+  </tbody>
+</table>
+</div>
+<div role="alert" id="freeArt" class="alert alert-success justify-content-between align-items-center">
+  Dieser Artikel wurde bisher noch nicht angemeldet.
+  <button type="submit" class="btn btn-success right">Artikel jetzt einreichen</button>
+</div>
+
+</form>
+<script>
+
+    function myFunction() {
+
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        var filter_year, filter_author, filter_title;
+        var td_year, td_author, td_title;
+        //input = document.getElementById("myInput");
+
+        filter_year = document.getElementById("filter_year").value.toUpperCase();
+        filter_author = document.getElementById("filter_author").value.toUpperCase();
+        filter_title = document.getElementById("filter_title").value.toUpperCase();
+
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td_year = tr[i].getElementsByTagName("td")[0];
+            td_author = tr[i].getElementsByTagName("td")[1];
+            td_title = tr[i].getElementsByTagName("td")[2];
+
+            if (td_year && td_author && td_title) {
+                txtValue_year = td_year.textContent || td_year.innerText;
+                txtValue_author = td_author.textContent || td_author.innerText;
+                txtValue_title = td_title.textContent || td_title.innerText;
+
+                if (
+                    txtValue_year.toUpperCase().indexOf(filter_year) > -1 &&
+                    txtValue_author.toUpperCase().indexOf(filter_author) > -1 &&
+                    txtValue_title.toUpperCase().indexOf(filter_title) > -1
+                ) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+        // count visible Rows
+        var visCel;
+        visCel = $('#myTable tr:visible').length;
+        if(visCel === 0){
+            $('#freeArt').addClass('d-flex');
+        }else{
+            $('#freeArt').removeClass('d-flex');
+        }
+        console.log(visCel);
+    }
+        $('#freeArt').hide();
+</script>

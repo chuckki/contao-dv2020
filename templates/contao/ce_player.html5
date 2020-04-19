@@ -30,8 +30,10 @@
       </video>
       <?php
       /* https://github.com/sampotts/plyr */
-			$GLOBALS['TL_JAVASCRIPT'][] = '/files/diagdiff-theme/assets/plyr/js/plyr.polyfilled.min.js';
-			$GLOBALS['TL_CSS'][] = '/files/diagdiff-theme/assets/plyr/css/plyr.css';
+			$GLOBALS['TL_JAVASCRIPT'][] = '/files/diagdiff-theme/assets/plyr/js/plyr.polyfilled.min.js|static';
+			$GLOBALS['TL_CSS'][] = '/files/diagdiff-theme/assets/plyr/css/plyr.css|static';
+
+
         ?>
 
       <script>
@@ -40,6 +42,7 @@
                   captions:{ active: true, language: 'en', update: false },
                   settings:['speed'],
                   displayDuration:true,
+                  iconUrl: '/files/diagdiff-theme/assets/plyr/plyr.svg',
                   controls: ['play-large', 'play', 'progress','current-time', 'duration', 'mute', 'volume','settings', 'pip', 'airplay', 'fullscreen']
               }
           );
@@ -50,6 +53,21 @@
                   $('#copyright').modal();
               }
           });
+
+          player.on('ready', event => {
+              <?php
+              $play = \Contao\Input::get('t');
+              if ($play) {
+                  try {
+                    $playTime = Comments::computeTimestampToSeconds($play);
+                    echo 'player.currentTime = '.$playTime.';';
+                  } catch (Exception $e) {
+                  }
+              }
+              ?>
+          });
+
+
 
       </script>
 
