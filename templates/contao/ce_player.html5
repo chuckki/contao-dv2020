@@ -54,6 +54,21 @@
               }
           });
 
+          player.on('ready', event => {
+              <?php
+              $play = \Contao\Input::get('t');
+              if ($play) {
+                  try {
+                    $playTime = Comments::computeTimestampToSeconds($play);
+                    echo 'player.currentTime = '.$playTime.';';
+                  } catch (Exception $e) {
+                  }
+              }
+              ?>
+          });
+
+
+
       </script>
 
     <?php else: ?>
