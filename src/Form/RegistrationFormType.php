@@ -27,7 +27,7 @@ class RegistrationFormType extends AbstractType
                     new Regex(
                         [
                             'pattern' => "/(@hhu.de|@uni-duesseldorf.de)$/",
-                            'message' => 'Benutzen Sie ausschliesslich Ihre Uni-E-Mailadresse.',
+                            'message' => 'Benutzen Sie ausschliesslich Ihre Uni-E-Mail-Adresse.',
                         ]
                     ),
                 ],
@@ -38,7 +38,7 @@ class RegistrationFormType extends AbstractType
             [
                 'label'       => 'Die Datenschutzerklärung habe ich gelesen und akzeptiert.',
                 'mapped'    => false,
-                'help'      => '<div class="form-check text-left">Hier gehts zur <a target="_blank" href="...">Datenschutzerklärung</a>.</div>',
+                'help'      => '<div class="form-check text-left">Hier gehts zur <a target="_blank" title="Datenschutzerklärung" href="/datenschutz.html">Datenschutzerklärung</a>.</div>',
                 'help_html' => true,
                 'constraints' => [
                     new IsTrue(

@@ -82,7 +82,7 @@ class RegistrationController extends AbstractController
             } else {
                 $this->addFlash(
                     'warning',
-                    'Es ist ein Fehler während des Versands der Bestätigungs-E-Mail aufgetretten. Bitte wenden Sie sich per E-Mail an dennis.esken@hhu.de'
+                    'Es ist ein Fehler während des Versands der Bestätigungs-E-Mail aufgetreten. Bitte wenden Sie sich per E-Mail an dennis.esken@hhu.de'
                 );
             }
 
