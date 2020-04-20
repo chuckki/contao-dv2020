@@ -10,7 +10,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Urheberrecht</h5>
       </div>
       <div class="modal-body">
-        Dieses Video darf weder gespeichert noch weiterverbreitet werden. Eine Verletzung des Uhrheberrechts, kann rechtliche Folgen für die jeweilige Person nach sich ziehen.
+        Bitte beachten Sie das Urheberrecht; dieses Video ist nur auf dieser Seite verfügbar und darf nicht anderswo gespeichert oder weiterverbreitet werden, wenn Sie sich nicht strafbar machen wollen.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" onclick="playCount++;player.play();" data-dismiss="modal">Einverstanden</button>
