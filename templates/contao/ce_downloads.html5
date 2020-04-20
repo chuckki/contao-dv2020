@@ -1,0 +1,53 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<ul>
+    <?php $counter = 0; ?>
+    <?php foreach ($this->files as $file): ?>
+    <?php $counter++; ?>
+      <li class="download-element ext-<?= $file['extension'] ?>">
+        <a href="#" title="<?= $file['title'] ?>"  data-toggle="modal" data-target="#modal<?= $counter?>"> <?= $file['link'] ?>
+          <span class="size">(<?= $file['filesize'] ?>)</span>
+        </a>
+      </li>
+
+      <div class="modal fade" id="modal<?= $counter?>" tabindex="-1" role="dialog" aria-labelledby="modal<?= $counter?>"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal<?= $counter?>Label">Urheberrechtsgesetz</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Nach dem Urheberrechtsgesetz (§ 60a) dürfen zum Schutz der Verlage und Autoren die in dieser
+                Veranstaltung verwendeten Materialien (z.B. Foliensätze, Videos mit Audiokommentaren, wissenschaftliche
+                Artikel, Ebooks, Abbildungen, Buchauszüge) ausschließlich der abgegrenzten Gruppe der
+                Veranstaltungsteilnehmer zugänglich gemacht werden; ihre Verwendung und Verbreitung außerhalb dieses
+                Kreises ist strafbar.
+              </p>
+              <p>
+                Aus diesem Grund sind alle Seminarunterlagen nur den registrierten Veranstaltungsteilnehmern nach einem
+                Login auf der Seminarwebsite zugänglich.
+              </p>
+              <p>
+                Bitte beachten Sie diese gesetzlich vorgegebenen Einschränkungen und veröffentlichen Sie diese
+                Seminarunterlagen (im eigenen Interesse) nicht anderswo.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <a onclick="$('#modal<?= $counter?>').modal('hide');" href="<?= $file['href'] ?>" class="btn btn-primary" >Datei speichern</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <?php endforeach; ?>
+</ul>
+
+<?php $this->endblock(); ?>
