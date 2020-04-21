@@ -40,7 +40,7 @@
               </p>
             </div>
             <div class="modal-footer">
-              <a onclick="$('#modal<?= $counter?>').modal('hide');" href="<?= $file['href'] ?>" class="btn btn-primary" >Datei speichern</a>
+              <a onclick="$('#modal<?= $counter?>').modal('hide');" href="<?= $file['href'] ?>" class="btn btn-primary" >Das habe ich zur Kenntnis genommen und möchten nun mit dem Download fortfahren</a>
             </div>
           </div>
         </div>
