@@ -26,9 +26,9 @@
     <th>Titel</th>
   </tr>
   <tr>
-    <th><input class="form-control" id="filter_year" onkeyup="myFunction()" type="number" placeholder="Jahr"  size="4" max="2020" min="1920"></th>
-    <th><input class="form-control" id="filter_author" onkeyup="myFunction()" type="text" placeholder="Autor"></th>
-    <th><input class="form-control" id="filter_title" onkeyup="myFunction()" type="text" placeholder="Titel"></th>
+    <th><input class="form-control" required id="filter_year" onkeyup="myFunction()" type="number" placeholder="Jahr"  size="4" max="2020" min="1920"></th>
+    <th><input class="form-control" required id="filter_author" onkeyup="myFunction()" type="text" placeholder="Autor"></th>
+    <th><input class="form-control" required id="filter_title" onkeyup="myFunction()" type="text" placeholder="Titel"></th>
   </tr>
   </thead>
   <tbody id="myTable">
