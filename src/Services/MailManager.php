@@ -33,7 +33,7 @@ class MailManager
 
         $subject = sprintf('Ihre Registrierung auf %s', Idna::decode(Environment::get('host')));
 
-        $abs   = new Address('dennis.esken@hhu.de', 'Dennis Esken');
+        $abs   = new Address('dv2020@diagdiff.online', 'DV2020 Seminar');
         $email = (new Email())->from($abs)->to($member->email)->replyTo($abs)->subject($subject)->text($reg_text)->html($reg_html);
 
         try {
@@ -47,7 +47,7 @@ class MailManager
 
     public function sendPasswortReset(MemberModel $member, string $absolutUrl): bool
     {
-        $abs   = new Address('dennis.esken@hhu.de', 'Dennis Esken');
+        $abs   = new Address('dv2020@diagdiff.online', 'DV2020 Seminar');
         $email = (new Email())->from($abs)->to($member->email)->replyTo($abs)->subject(
             'Zurücksetzen Ihres Passworts'
         )->text(
