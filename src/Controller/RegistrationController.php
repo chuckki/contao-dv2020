@@ -64,7 +64,7 @@ class RegistrationController extends AbstractController
             $member->tstamp    = time();
             $member->disable   = true;
             $member->dateAdded = time();
-            $member->username  = $this->generateUsername($mail);
+            $member->username  = $mail;
             $encoder           = $encoderFactory->getEncoder(FrontendUser::class);
             $member->password  = $encoder->encodePassword($pw, null);
             $member->save();
