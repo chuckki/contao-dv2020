@@ -127,21 +127,21 @@ class RegistrationController extends AbstractController
             || count($arrIds = current($arrRelated)) !== 1
             || (!$objMember = MemberModel::findByPk($arrIds[0]))) {
             $msgType = 'error';
-            $msg     = $GLOBALS['TL_LANG']['MSC']['invalidToken'];
+            $msg     = 'Ungültiges Token';
             $this->addFlash($msgType, $msg);
 
             return $this->redirectToRoute('app_register_index');
         }
         if ($optInToken->isConfirmed()) {
             $msgType = 'error';
-            $msg     = $GLOBALS['TL_LANG']['MSC']['tokenConfirmed'];
+            $msg     = 'Dieses Token wurde bereits bestätigt';
             $this->addFlash($msgType, $msg);
 
             return $this->redirectToRoute('app_register_index');
         }
         if ($optInToken->getEmail() !== $objMember->email) {
             $msgType = 'error';
-            $msg     = $GLOBALS['TL_LANG']['MSC']['tokenEmailMismatch'];
+            $msg     = 'Die E-Mail-Adresse des Tokens stimmt nicht überein';
             $this->addFlash($msgType, $msg);
 
             return $this->redirectToRoute('app_register_index');
