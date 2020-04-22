@@ -114,7 +114,7 @@ class RegistrationController extends AbstractController
      */
     public function checkTokenAction(string $token): RedirectResponse
     {
-        $msg     = 'Ihre E-Mail-Adresse wurde bestätigt. Sie können Sich nun einloggen.';
+        $msg     = 'Ihre E-Mail-Adresse wurde bestätigt. Hier gehts zum <a href="/">Login</a>';
         $msgType = 'notify';
         /** @var OptIn $optIn */
         $optIn = System::getContainer()->get('contao.opt-in');
@@ -146,6 +146,7 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('app_register_index');
         }
+        $optInToken->confirm();
         $objMember->disable = '';
         $objMember->save();
 
@@ -158,7 +159,7 @@ class RegistrationController extends AbstractController
 
         $this->addFlash($msgType, $msg);
 
-        return $this->redirect('/');
+        return $this->redirectToRoute('app_register_index');
     }
 
 
