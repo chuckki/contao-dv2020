@@ -3,6 +3,8 @@
 namespace App\Module;
 
 use App\Model\ExtMemberModel;
+use Contao\FrontendUser;
+use Contao\Input;
 use Contao\MemberModel;
 use Contao\Module;
 use Patchwork\Utf8;
@@ -43,11 +45,20 @@ class ReferenceListModule extends Module
     {
         // find all pages with language "de" and pid 1
         $userData = ExtMemberModel::findAllReference();
+        $objUser = FrontendUser::getInstance();
 
+        $formId = 'addReference_' . $objUser->id;
 
-        dump($userData);
-        dump(count($userData));
-        $this->Template->userRow = $userData;
+        if (Input::post('FORM_SUBMIT') == $formId) {
+
+        }
+
+        if(!$userData){
+            $this->Template->userRow = [$userData];
+        }else{
+            $this->Template->userRow = $userData;
+        }
         $this->Template->message = 'Hello World';
+        $this->Template->formId = $formId;
     }
 }
