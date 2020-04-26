@@ -10,7 +10,7 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['username']['eval']['unique'] = false;
 $GLOBALS['TL_DCA']['tl_member']['list']['label']['fields'] = array('icon', 'username', 'email','groups','dateAdded');
 
 /** reference data */
-
+/*
 $config = array(
     'exclude'   => true,
     'search'    => true,
@@ -24,3 +24,4 @@ $config = array(
 $GLOBALS['TL_DCA']['tl_member']['fields']['ref_year'] = $config;
 $GLOBALS['TL_DCA']['tl_member']['fields']['ref_author'] = $config;
 $GLOBALS['TL_DCA']['tl_member']['fields']['ref_title'] = $config;
+*/

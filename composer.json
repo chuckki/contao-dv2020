@@ -2,6 +2,7 @@
     "type": "project",
     "require": {
         "chuckki/symfony-comments": "dev-master",
+        "codefog/contao-haste": "^4.24",
         "contao/conflicts": "*@dev",
         "contao/manager-bundle": "4.9.*",
         "contao/news-bundle": "4.9.*",

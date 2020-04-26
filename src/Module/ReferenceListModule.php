@@ -3,9 +3,9 @@
 namespace App\Module;
 
 use App\Model\ExtMemberModel;
+use App\Services\FormBuilder;
+use Contao\FormTextField;
 use Contao\FrontendUser;
-use Contao\Input;
-use Contao\MemberModel;
 use Contao\Module;
 use Patchwork\Utf8;
 
@@ -14,14 +14,14 @@ class ReferenceListModule extends Module
     /**
      * @var string
      */
-    protected $strTemplate = 'module/mod_referenceList';
+    protected $strTemplate = 'mod_referenceList';
 
     /**
      * Displays a wildcard in the back end.
      *
      * @return string
      */
-    public function generate()
+    public function generate(): string
     {
         if (TL_MODE === 'BE') {
             $template = new \BackendTemplate('be_wildcard');
@@ -43,22 +43,41 @@ class ReferenceListModule extends Module
      */
     protected function compile()
     {
-        // find all pages with language "de" and pid 1
-        $userData = ExtMemberModel::findAllReference();
         $objUser = FrontendUser::getInstance();
 
-        $formId = 'addReference_' . $objUser->id;
+        $formBuilder = new FormBuilder();
+        $form = $formBuilder->buildForm($objUser->id);
 
-        if (Input::post('FORM_SUBMIT') == $formId) {
+        $userRef = ExtMemberModel::findRefByUser($objUser->id);
 
+        if ($form->validate() && !$userRef) {
+            $arrData = $form->fetchAll();
+            $objUser->ref_year = $arrData['year'];
+            $objUser->ref_author = $arrData['author'];
+            $objUser->ref_title = $arrData['title'];
+            $objUser->save();
         }
 
-        if(!$userData){
-            $this->Template->userRow = [$userData];
-        }else{
-            $this->Template->userRow = $userData;
+        if($userRef)
+        {
+            foreach ($form->getWidgets() as $formField) {
+                /** @var $formField FormTextField */
+                //$formField->readonly = true;
+                $formField->disabled = true;
+            }
+        /** @var FormTextField $widget */
+        $widget = null;
+            $form->getWidget('year')->value = '22';
         }
-        $this->Template->message = 'Hello World';
-        $this->Template->formId = $formId;
+
+        /** @var FormTextField $widget */
+        $form->getWidget('year')->addAttribute('size',4);
+
+        // find all pages with language "de" and pid 1
+        $this->Template->userRow = ExtMemberModel::findAllReference();
+        $this->Template->refForm = $form;
+        $this->Template->requstToken = \RequestToken::get();
     }
+
+
 }
