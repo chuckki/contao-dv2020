@@ -20,6 +20,7 @@ class FormBuilder
             'label'     => 'Jahr',
             'inputType' => 'text',
             'eval' => array('multiple'  => true,
+                            'placeholder' => 'Jahr',
                             'size'      => 4,
                             'maxlength' => 4,
                             'minlength' => 4,
@@ -37,7 +38,12 @@ class FormBuilder
             'default'   => '',
             'label'     => 'Autor',
             'inputType' => 'text',
-            'eval'      => array('mandatory' => true)
+            'eval' => array(
+                'mandatory'   => true,
+                'placeholder' => 'Autor',
+                'onkeyup'     => 'myFunction()',
+                'class'       => 'form-control'
+            ),
         ));
 
         // title
@@ -45,7 +51,12 @@ class FormBuilder
             'default'   => '',
             'label'     => 'Titel',
             'inputType' => 'text',
-            'eval'      => array('mandatory' => true)
+            'eval' => array(
+                'mandatory'   => true,
+                'placeholder' => 'Titel',
+                'onkeyup'     => 'myFunction()',
+                'class'       => 'form-control',
+            )
         ));
 
         return $objForm;

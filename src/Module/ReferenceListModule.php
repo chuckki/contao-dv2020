@@ -3,6 +3,7 @@
 namespace App\Module;
 
 use App\Model\ExtMemberModel;
+use App\Model\ReferenceModel;
 use App\Services\FormBuilder;
 use Contao\FormTextField;
 use Contao\FrontendUser;
@@ -25,12 +26,11 @@ class ReferenceListModule extends Module
     {
         if (TL_MODE === 'BE') {
             $template = new \BackendTemplate('be_wildcard');
-
             $template->wildcard = '### '.Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['helloWorld'][0]).' ###';
-            $template->title = $this->headline;
-            $template->id = $this->id;
-            $template->link = $this->name;
-            $template->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id='.$this->id;
+            $template->title    = $this->headline;
+            $template->id       = $this->id;
+            $template->link     = $this->name;
+            $template->href     = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id='.$this->id;
 
             return $template->parse();
         }
@@ -44,39 +44,36 @@ class ReferenceListModule extends Module
     protected function compile()
     {
         $objUser = FrontendUser::getInstance();
+        $userRef                 = ReferenceModel::findRefByUser($objUser->id);
+        dump($userRef);
+        if ($userRef) {
+            $this->Template->noEntry = false;
 
-        $formBuilder = new FormBuilder();
-        $form = $formBuilder->buildForm($objUser->id);
+        } else {
 
-        $userRef = ExtMemberModel::findRefByUser($objUser->id);
+            $formBuilder = new FormBuilder();
+            $form        = $formBuilder->buildForm($objUser->id);
+            if ($form->validate() && !$userRef) {
+                $arrData             = $form->fetchAll();
+                $refObj = new ReferenceModel();
 
-        if ($form->validate() && !$userRef) {
-            $arrData = $form->fetchAll();
-            $objUser->ref_year = $arrData['year'];
-            $objUser->ref_author = $arrData['author'];
-            $objUser->ref_title = $arrData['title'];
-            $objUser->save();
-        }
+                $refObj->ref_year   = $arrData['year'];
+                $refObj->ref_author = $arrData['author'];
+                $refObj->ref_title  = $arrData['title'];
+                $refObj->pid        = $objUser->id;
+                $refObj->tstamp        = time();
 
-        if($userRef)
-        {
-            foreach ($form->getWidgets() as $formField) {
-                /** @var $formField FormTextField */
-                //$formField->readonly = true;
-                $formField->disabled = true;
+                $refObj->save();
             }
-        /** @var FormTextField $widget */
-        $widget = null;
-            $form->getWidget('year')->value = '22';
+
+            $form->getWidget('year')->addAttribute('size', 4);
+            $this->Template->noEntry = true;
+            $this->Template->userRow     = ReferenceModel::findAllAsArray();
+            $this->Template->refForm     = $form;
+            $this->Template->requstToken = \RequestToken::get();
+
         }
 
-        /** @var FormTextField $widget */
-        $form->getWidget('year')->addAttribute('size',4);
-
-        // find all pages with language "de" and pid 1
-        $this->Template->userRow = ExtMemberModel::findAllReference();
-        $this->Template->refForm = $form;
-        $this->Template->requstToken = \RequestToken::get();
     }
 
 

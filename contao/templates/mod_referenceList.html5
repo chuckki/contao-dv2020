@@ -1,21 +1,6 @@
-<h1>hier</h1>
 
 
-<br><br>
-<script>
-    /*
-  $(document).ready(function(){
-    $(".inputFilter").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $("#myTable tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-
-
-  */
-</script>
+<?php if($this->noEntry): ?>
 <form id="<?= $this->formId ?>" method="post" novalidate>
   <input type="hidden" name="REQUEST_TOKEN" value="{{REQUEST_TOKEN}}">
   <input type="hidden" name="FORM_SUBMIT" value="<?= $this->refForm->getFormId(); ?>">
@@ -27,35 +12,20 @@
     <th>Erstautor</th>
     <th>Titel</th>
   </tr>
-
-  <?php
-    dump($this->refForm->getWidget('year')->generate());
-
-  ?>
-
   <tr>
     <th>
       <?= $this->refForm->getWidget('year')->getErrorAsHTML() ?>
-
       <?= $this->refForm->getWidget('year')->generate() ?>
-
-      <input class="form-control" id="year" required onkeyup="myFunction()"
-             name="<?= $this->refForm->getWidget('year')->name ?>" value="<?= $this->refForm->getWidget('year')->value ?>" type="number"
-             placeholder="<?= $this->refForm->getWidget('year')->label ?>" size="4" max="2020" min="1820">
     </th>
 
     <th>
       <?= $this->refForm->getWidget('author')->ErrorAsHTML ?>
-      <input class="form-control" id="author" required onkeyup="myFunction()"
-             name="<?= $this->refForm->getWidget('author')->name ?>" value="<?= $this->refForm->getWidget('author')->value ?>" type="text"
-             placeholder="<?= $this->refForm->getWidget('author')->label ?>" >
+      <?= $this->refForm->getWidget('author')->generate() ?>
     </th>
     
     <th>
       <?= $this->refForm->getWidget('title')->ErrorAsHTML ?>
-      <input class="form-control" id="title" required onkeyup="myFunction()"
-             name="<?= $this->refForm->getWidget('title')->name ?>" value="<?= $this->refForm->getWidget('title')->value ?>" type="text"
-             placeholder="<?= $this->refForm->getWidget('title')->label ?>" >
+      <?= $this->refForm->getWidget('title')->generate() ?>
     </th>
 
   </tr>
@@ -81,18 +51,19 @@
 </form>
 
 <script>
-
     function myFunction() {
 
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
         var filter_year, filter_author, filter_title;
         var td_year, td_author, td_title;
+        var txtValue_year,txtValue_author,txtValue_title;
         //input = document.getElementById("myInput");
 
-        filter_year = document.getElementById("year").value.toUpperCase();
-        filter_author = document.getElementById("author").value.toUpperCase();
-        filter_title = document.getElementById("title").value.toUpperCase();
+        filter_year = document.getElementById("ctrl_year").value.toUpperCase();
+        filter_author = document.getElementById("ctrl_author").value.toUpperCase();
+        filter_title = document.getElementById("ctrl_title").value.toUpperCase();
+
 
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
@@ -123,12 +94,21 @@
         // count visible Rows
         var visCel;
         visCel = $('#myTable tr:visible').length;
-        if(visCel === 0){
+        if(visCel === 0 &&
+                    filter_year !== '' &&
+                    filter_author !== '' &&
+                    filter_title !== ''
+        ){
             $('#freeArt').addClass('d-flex');
         }else{
             $('#freeArt').removeClass('d-flex');
         }
-        console.log(visCel);
+
     }
         $('#freeArt').hide();
 </script>
+<?php else: ?>
+
+
+
+<?php endif; ?>
