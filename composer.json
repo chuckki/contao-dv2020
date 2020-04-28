@@ -6,6 +6,7 @@
         "contao/conflicts": "*@dev",
         "contao/manager-bundle": "4.9.*",
         "contao/news-bundle": "4.9.*",
+        "contao/newsletter-bundle": "^4.9",
         "fritzmg/contao-file-access": "^2.1",
         "oneup/contao-email-login": "^1.2",
         "symfony/form": "^5.0",
