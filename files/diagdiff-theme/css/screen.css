@@ -262,3 +262,9 @@ img {
 *{
     hyphens: auto;
 }
+
+/** ref module **/
+
+.inputLine th{
+    padding-left: 0;
+}

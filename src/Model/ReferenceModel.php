@@ -8,7 +8,7 @@ use Contao\Model;
  * @property string  $ref_year
  * @property string  $ref_author
  * @property string  $ref_title
- * @property int  $tstamp
+ * @property integer $tstamp
  */
 class ReferenceModel extends Model
 {

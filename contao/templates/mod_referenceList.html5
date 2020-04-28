@@ -1,6 +1,11 @@
 
 
 <?php if($this->noEntry): ?>
+<div class="ce_text">
+  <h3>Artikelauswahl</h3>
+  <p>
+    Nachfolgend haben Sie die Möglichkeit für die Hausarbeit Ihren zu bearbeitenden Artikel einzureichen. Beachten Sie, dass jeder Artikel nur einmal eingereicht werden darf.
+  </p>
 <form id="<?= $this->formId ?>" method="post" novalidate>
   <input type="hidden" name="REQUEST_TOKEN" value="{{REQUEST_TOKEN}}">
   <input type="hidden" name="FORM_SUBMIT" value="<?= $this->refForm->getFormId(); ?>">
@@ -12,7 +17,7 @@
     <th>Erstautor</th>
     <th>Titel</th>
   </tr>
-  <tr>
+  <tr class="inputLine">
     <th>
       <?= $this->refForm->getWidget('year')->getErrorAsHTML() ?>
       <?= $this->refForm->getWidget('year')->generate() ?>
@@ -107,8 +112,12 @@
     }
         $('#freeArt').hide();
 </script>
+</div>
 <?php else: ?>
-
-
-
+<div class="ce_text">
+<h3>Ihr Artikel</h3>
+<p>  Dieser Artikel wurde von Ihnen angemeldet:
+  <strong><?= $this->userRef->ref_author ?> (<?= $this->userRef->ref_year ?>) <i><?= $this->userRef->ref_title ?></i></strong>
+</p>
+</div>
 <?php endif; ?>
