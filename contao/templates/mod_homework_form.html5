@@ -1,0 +1,29 @@
+
+
+<form id="<?= $this->formId ?>" method="post" novalidate>
+  <input type="hidden" name="REQUEST_TOKEN" value="{{REQUEST_TOKEN}}">
+  <input type="hidden" name="FORM_SUBMIT" value="<?= $this->homeWorkForm->getFormId(); ?>">
+
+    <?php
+    /** @var $form \Haste\Form\Form */
+    $form = $this->homeWorkForm;
+
+    /** @var FormTextArea $tf */
+    $tf = $this->homeWorkForm->getWidget('q1');
+    dump($tf->label);
+    dump($form->getWidgets());
+    ?>
+
+  <?php foreach ($form->getWidgets() as $widget): ?>
+  <div class="form-group">
+      <label for="<?= $widget->id ?>" class="mandatory"><?= $widget->label ?> </label>
+      <?= $widget->generate() ?>
+  </div>
+  <?php endforeach; ?>
+
+  <div role="alert" id="freeArt" class="alert alert-success justify-content-between align-items-center">
+    Dieser Artikel wurde bisher noch nicht angemeldet.
+    <button type="submit" class="btn btn-success right">Artikel jetzt einreichen</button>
+  </div>
+
+</form>

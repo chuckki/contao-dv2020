@@ -8,7 +8,30 @@ use Haste\Input\Input;
 class FormBuilder
 {
 
-    public function buildForm(int $userId) :Form
+    public function buildWorkForm(int $userId):Form
+    {
+        $objForm = new Form('homework_' . $userId, 'POST', function ($objHaste) {
+            return Input::post('FORM_SUBMIT') === $objHaste->getFormId();
+        });
+
+        $objForm->addFormField('q1',array(
+            'default'   => '',
+            'label'     => 'Wie lautet die vollständige Zitation des Artikels nach APA-Format?',
+            'inputType' => 'textarea',
+            'eval' => array(
+                'placeholder' => 'max. 120 Zeichen',
+                'mandatory'   => true,
+                'class'       => 'form-control',
+                'size'        => 4,
+                'cols'        => 40,
+                'rows'        => 4,
+            ),
+        ));
+
+        return $objForm;
+    }
+
+    public function buildRefForm(int $userId) :Form
     {
         $objForm = new Form('addReference_' . $userId, 'POST', function ($objHaste) {
             return Input::post('FORM_SUBMIT') === $objHaste->getFormId();
@@ -19,7 +42,7 @@ class FormBuilder
             'default'   => '',
             'label'     => 'Jahr',
             'inputType' => 'text',
-            'eval' => array('multiple'  => true,
+            'eval' => array(
                             'placeholder' => 'Jahr',
                             'size'      => 4,
                             'maxlength' => 4,

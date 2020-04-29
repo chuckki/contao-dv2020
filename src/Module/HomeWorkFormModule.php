@@ -9,12 +9,12 @@ use Contao\Module;
 use Contao\System;
 use Patchwork\Utf8;
 
-class ReferenceListModule extends Module
+class HomeWorkFormModule extends Module
 {
     /**
      * @var string
      */
-    protected $strTemplate = 'mod_referenceList';
+    protected $strTemplate = 'mod_homework_form';
 
     /**
      * Displays a wildcard in the back end.
@@ -45,9 +45,12 @@ class ReferenceListModule extends Module
         $csrfManager = System::getContainer()->get('contao.csrf.token_manager');
         $objUser     = FrontendUser::getInstance();
         $formBuilder = new FormBuilder();
-        $form        = $formBuilder->buildRefForm($objUser->id);
+        $form        = $formBuilder->buildWorkForm($objUser->id);
         if ($form->validate()) {
             $arrData            = $form->fetchAll();
+            dump($arrData);
+            die;
+/*
             $refObj             = new ReferenceModel();
             $refObj->ref_year   = $arrData['year'];
             $refObj->ref_author = $arrData['author'];
@@ -55,17 +58,11 @@ class ReferenceListModule extends Module
             $refObj->pid        = $objUser->id;
             $refObj->tstamp     = time();
             $refObj->save();
+*/
         }
-        $form->getWidget('year')->addAttribute('size', 4);
-        $this->Template->noEntry     = true;
-        $this->Template->userRow     = ReferenceModel::findAllAsArray();
-        $this->Template->refForm     = $form;
+
+        $this->Template->homeWorkForm     = $form;
         $this->Template->requstToken = $csrfManager->getToken($form->getFormId());
 
-        $userRef = ReferenceModel::findRefByUser($objUser->id);
-        if ($userRef) {
-            $this->Template->noEntry = false;
-            $this->Template->userRef = $userRef;
-        }
     }
 }
