@@ -46,7 +46,14 @@ class ReferenceListModule extends Module
         $objUser     = FrontendUser::getInstance();
         $formBuilder = new FormBuilder();
         $form        = $formBuilder->buildRefForm($objUser->id);
+        $form->getWidget('year')->addAttribute('size', 4);
+
         $userRef = ReferenceModel::findRefByUser($objUser->id);
+
+        $this->Template->noEntry     = true;
+        $this->Template->userRow     = ReferenceModel::findAllAsArray();
+        $this->Template->refForm     = $form;
+        $this->Template->requstToken = $csrfManager->getToken($form->getFormId());
 
         if ($form->validate() && !$userRef) {
             $arrData            = $form->fetchAll();
@@ -57,12 +64,9 @@ class ReferenceListModule extends Module
             $refObj->pid        = $objUser->id;
             $refObj->tstamp     = time();
             $refObj->save();
+            $userRef = $refObj;
+            $this->Template->noEntry = false;
         }
-        $form->getWidget('year')->addAttribute('size', 4);
-        $this->Template->noEntry     = true;
-        $this->Template->userRow     = ReferenceModel::findAllAsArray();
-        $this->Template->refForm     = $form;
-        $this->Template->requstToken = $csrfManager->getToken($form->getFormId());
 
         if ($userRef) {
             $this->Template->noEntry = false;

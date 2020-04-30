@@ -10,8 +10,6 @@
 
     /** @var FormTextArea $tf */
     $tf = $this->homeWorkForm->getWidget('q1');
-    dump($tf->label);
-    dump($form->getWidgets());
     ?>
 
   <?php foreach ($form->getWidgets() as $widget): ?>
