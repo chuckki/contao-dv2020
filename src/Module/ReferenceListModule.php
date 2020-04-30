@@ -46,7 +46,9 @@ class ReferenceListModule extends Module
         $objUser     = FrontendUser::getInstance();
         $formBuilder = new FormBuilder();
         $form        = $formBuilder->buildRefForm($objUser->id);
-        if ($form->validate()) {
+        $userRef = ReferenceModel::findRefByUser($objUser->id);
+
+        if ($form->validate() && !$userRef) {
             $arrData            = $form->fetchAll();
             $refObj             = new ReferenceModel();
             $refObj->ref_year   = $arrData['year'];
@@ -62,7 +64,6 @@ class ReferenceListModule extends Module
         $this->Template->refForm     = $form;
         $this->Template->requstToken = $csrfManager->getToken($form->getFormId());
 
-        $userRef = ReferenceModel::findRefByUser($objUser->id);
         if ($userRef) {
             $this->Template->noEntry = false;
             $this->Template->userRef = $userRef;

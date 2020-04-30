@@ -8,6 +8,7 @@ use Contao\FrontendUser;
 use Contao\Module;
 use Contao\System;
 use Patchwork\Utf8;
+use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class HomeWorkFormModule extends Module
 {
@@ -48,17 +49,16 @@ class HomeWorkFormModule extends Module
         $form        = $formBuilder->buildWorkForm($objUser->id);
         if ($form->validate()) {
             $arrData            = $form->fetchAll();
-            dump($arrData);
-            die;
-/*
-            $refObj             = new ReferenceModel();
-            $refObj->ref_year   = $arrData['year'];
-            $refObj->ref_author = $arrData['author'];
-            $refObj->ref_title  = $arrData['title'];
-            $refObj->pid        = $objUser->id;
-            $refObj->tstamp     = time();
-            $refObj->save();
-*/
+
+            $userEntry = ReferenceModel::findRefByUser($objUser->id);
+            if(empty($userEntry)){
+                throw new NotFoundResourceException();
+            }
+            $userEntry->pid = $objUser->id;
+            $userEntry->q1  = $arrData['q1'];
+            $userEntry->q2  = $arrData['q2'];
+            $userEntry->q3  = $arrData['q3'];
+            $userEntry->save();
         }
 
         $this->Template->homeWorkForm     = $form;

@@ -62,4 +62,31 @@ $config = array(
 $GLOBALS['TL_DCA']['tl_reference']['fields']['ref_year'] = $config;
 $GLOBALS['TL_DCA']['tl_reference']['fields']['ref_author'] = $config;
 $GLOBALS['TL_DCA']['tl_reference']['fields']['ref_title'] = $config;
+$GLOBALS['TL_DCA']['tl_reference']['fields']['submission'] = array(
+    'exclude'   => true,
+    'inputType' => 'text',
+    'eval'      => array('rgxp' => 'datim', 'datepicker' => true, 'tl_class' => 'w50 wizard'),
+    'sql'       => "varchar(10) NOT NULL default ''",
+);
 
+$GLOBALS['TL_DCA']['tl_reference']['fields']['q1'] = array(
+    'exclude'     => true,
+    'search'      => true,
+    'inputType'   => 'textarea',
+    'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
+    'sql'         => "mediumtext NULL",
+);
+$GLOBALS['TL_DCA']['tl_reference']['fields']['q2'] = array(
+    'exclude'     => true,
+    'search'      => true,
+    'inputType'   => 'textarea',
+    'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
+    'sql'         => "mediumtext NULL",
+);
+$GLOBALS['TL_DCA']['tl_reference']['fields']['q3'] = array(
+    'exclude'     => true,
+    'search'      => true,
+    'inputType'   => 'textarea',
+    'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
+    'sql'         => "mediumtext NULL",
+);
