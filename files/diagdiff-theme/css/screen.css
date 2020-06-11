@@ -268,3 +268,8 @@ img {
 .inputLine th{
     padding-left: 0;
 }
+
+
+p.list{
+    margin-bottom: 2px;
+}
