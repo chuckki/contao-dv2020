@@ -60,7 +60,7 @@
 </div>
 <div role="alert" id="freeArt" class="alert alert-success justify-content-between align-items-center">
   Dieser Artikel wurde bisher noch nicht angemeldet.
-  <button type="button" class="btn btn-success right" data-toggle="modal" data-target="#modalArtikel">Artikel jetzt einreichen</button>
+  <button type="button" class="btn btn-success right" data-toggle="modal" data-target="#modalArtikel">Artikel jetzt anmelden</button>
 </div>
 
 </form>
@@ -72,7 +72,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="modalArtikelLabel">Artikel jetzt einreichen</h5>
+              <h5 class="modal-title" id="modalArtikelLabel">Artikel jetzt anmelden</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -84,7 +84,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Artikel bearbeiten</button>
-              <button onclick="$('#modal<?= $counter?>').modal('hide');document.getElementById('<?= $this->refForm->getFormId() ?>').submit();" class="btn btn-success" >Artikel jetzt einreichen</button>
+              <button onclick="$('#modal<?= $counter?>').modal('hide');document.getElementById('<?= $this->refForm->getFormId() ?>').submit();" class="btn btn-success" >Artikel jetzt anmelden</button>
             </div>
           </div>
         </div>
