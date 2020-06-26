@@ -1,23 +1,15 @@
-<h1>hier</h1>
 
 
-<br><br>
-<script>
-    /*
-  $(document).ready(function(){
-    $(".inputFilter").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $("#myTable tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-
-
-  */
-</script>
-<form id="<?= $this->formId ?>">
-<div class="table-responsive">
+<?php if($this->noEntry): ?>
+<div class="ce_text">
+  <h3>Anmeldung des zu bearbeitenden Artikels</h3>
+  <p>
+    Nachfolgend haben Sie die Möglichkeit, Ihren selbstgewählten Artikel für die Hausarbeit anzumelden. Beachten Sie, dass jeder Artikel nur einmal angemeldet werden kann. Unterhalb der Eingabefelder finden Sie eine Liste von Artikeln, die bereits angemeldet wurden. Sollte ein von Ihnen ausgewählter Artikel bereits in dieser Liste aufgeführt sein, entscheiden Sie sich bitte für einen anderen Artikel.
+  </p>
+<form id="<?= $this->refForm->getFormId() ?>" method="post">
+  <input type="hidden" name="REQUEST_TOKEN" value="{{REQUEST_TOKEN}}">
+  <input type="hidden" name="FORM_SUBMIT" value="<?= $this->refForm->getFormId() ?>">
+  <div class="table-responsive">
 <table class="table table-striped table-hover">
   <thead>
   <tr>
@@ -25,13 +17,36 @@
     <th>Erstautor</th>
     <th>Titel</th>
   </tr>
-  <tr>
-    <th><input class="form-control" required id="filter_year" onkeyup="myFunction()" type="number" placeholder="Jahr"  size="4" max="2020" min="1920"></th>
-    <th><input class="form-control" required id="filter_author" onkeyup="myFunction()" type="text" placeholder="Autor"></th>
-    <th><input class="form-control" required id="filter_title" onkeyup="myFunction()" type="text" placeholder="Titel"></th>
+  <tr class="inputLine">
+    <th>
+      <?= $this->refForm->getWidget('year')->getErrorAsHTML() ?>
+      <?= $this->refForm->getWidget('year')->generate() ?>
+    </th>
+
+    <th>
+      <?= $this->refForm->getWidget('author')->ErrorAsHTML ?>
+      <?= $this->refForm->getWidget('author')->generate() ?>
+    </th>
+    
+    <th>
+      <?= $this->refForm->getWidget('title')->ErrorAsHTML ?>
+      <?= $this->refForm->getWidget('title')->generate() ?>
+    </th>
+
   </tr>
+
   </thead>
   <tbody id="myTable">
+
+<tr><td>2003</td><td>Krahé</td><td>Verfälschungstendenzen im NEO-FFI - Eine experimentelle Überprüfung</td></tr>
+<tr><td>2004</td><td>Schmidt-Atzert</td><td>Erkennen von Simulation und Dissimulation im Test d2</td></tr>
+<tr><td>2006</td><td>Kim</td><td>Can we trust creativity tests- A review of the Torrance Tests of Creative Thinking (TTCT)</td></tr>
+<tr><td>2007</td><td>Woo</td><td>Latent Mean Differences in Facets of Achievement Motivation of Students and Adult Workers in the US</td></tr>
+<tr><td>2010</td><td>Zettler</td><td>Honesty-Humility and a Person-Situation Interaction at Work</td></tr>
+<tr><td>2010</td><td>Steinmayr</td><td>Do sex differences in a faceted model of fluid and crystallized intelligence depend on the method applied</td></tr>
+<tr><td>2014</td><td>Landmann</td><td>Entwicklung von 130 deutschsprachigen Compound Remote Associate (CRA)-Worträtseln zur Untersuchung kreativer Prozesse im deutschen Sprachraum</td></tr>
+<tr><td>2018</td><td>Kowalski</td><td>Dark Triad Traits and Intelligence</td></tr>
+
   <?php foreach ($this->userRow as $row): ?>
     <tr>
       <td><?= $row->ref_year ?></td>
@@ -45,23 +60,52 @@
 </div>
 <div role="alert" id="freeArt" class="alert alert-success justify-content-between align-items-center">
   Dieser Artikel wurde bisher noch nicht angemeldet.
-  <button type="submit" class="btn btn-success right">Artikel jetzt einreichen</button>
+  <button type="button" class="btn btn-success right" data-toggle="modal" data-target="#modalArtikel">Artikel jetzt einreichen</button>
 </div>
 
 </form>
-<script>
 
+
+
+      <div class="modal fade" id="modalArtikel" tabindex="-1" role="dialog" aria-labelledby="modalArtikel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalArtikelLabel">Artikel jetzt einreichen</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Sind Sie sicher, dass Sie diesen Artikel für sich anmelden möchten? Die Anmeldung kann nicht rückgängig gemacht werden; stellen Sie also vor der Bestätigung sicher, dass der Artikel alle oben genannten Kriterien erfüllt und dass Sie genau diesen Artikel in Ihrer Hausarbeit bearbeiten möchten.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Artikel bearbeiten</button>
+              <button onclick="$('#modal<?= $counter?>').modal('hide');document.getElementById('<?= $this->refForm->getFormId() ?>').submit();" class="btn btn-success" >Artikel jetzt einreichen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+<script>
     function myFunction() {
 
         // Declare variables
         var input, filter, table, tr, td, i, txtValue;
         var filter_year, filter_author, filter_title;
         var td_year, td_author, td_title;
+        var txtValue_year,txtValue_author,txtValue_title;
         //input = document.getElementById("myInput");
 
-        filter_year = document.getElementById("filter_year").value.toUpperCase();
-        filter_author = document.getElementById("filter_author").value.toUpperCase();
-        filter_title = document.getElementById("filter_title").value.toUpperCase();
+        filter_year = document.getElementById("ctrl_year").value.toUpperCase();
+        filter_author = document.getElementById("ctrl_author").value.toUpperCase();
+        filter_title = document.getElementById("ctrl_title").value.toUpperCase();
+
 
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
@@ -92,12 +136,25 @@
         // count visible Rows
         var visCel;
         visCel = $('#myTable tr:visible').length;
-        if(visCel === 0){
+        if(visCel === 0 &&
+                    filter_year !== '' &&
+                    filter_author !== '' &&
+                    filter_title !== ''
+        ){
             $('#freeArt').addClass('d-flex');
         }else{
             $('#freeArt').removeClass('d-flex');
         }
-        console.log(visCel);
+
     }
         $('#freeArt').hide();
 </script>
+</div>
+<?php else: ?>
+<div class="ce_text">
+<h3>Ihr Artikel</h3>
+
+Sie haben den Artikel "<?= $this->userRef->ref_author ?> (<?= $this->userRef->ref_year ?>) <?= $this->userRef->ref_title ?>" angemeldet. Der Bearbeitungszeitraum für die Hausarbeit beginnt am 14. Juli 2020. Ab diesem Tag werden die zu bearbeitenden Fragen an dieser Stelle verfügbar sein. Die Bearbeitungszeit endet am 28. Juli 2020 um 23:59 Uhr.
+
+</div>
+<?php endif; ?>

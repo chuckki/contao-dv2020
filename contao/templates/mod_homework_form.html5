@@ -1,0 +1,25 @@
+
+<div class="jumbotron">
+<form id="<?= $this->formId ?>" method="post" novalidate>
+  <input type="hidden" name="REQUEST_TOKEN" value="{{REQUEST_TOKEN}}">
+  <input type="hidden" name="FORM_SUBMIT" value="<?= $this->homeWorkForm->getFormId(); ?>">
+
+    <?php
+    /** @var $form \Haste\Form\Form */
+    $form = $this->homeWorkForm;
+
+    /** @var FormTextArea $tf */
+    $tf = $this->homeWorkForm->getWidget('q1');
+    ?>
+
+  <?php foreach ($form->getWidgets() as $widget): ?>
+  <div class="form-group">
+      <label for="<?= $widget->id ?>" class="mandatory"><?= $widget->label ?> </label>
+      <?= $widget->generate() ?>
+  </div>
+  <?php endforeach; ?>
+
+    <button type="submit" class="btn btn-success float_right">Eingabe Speichern</button>
+
+</form>
+</div>

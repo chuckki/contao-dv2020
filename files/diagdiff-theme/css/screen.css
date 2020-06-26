@@ -262,3 +262,14 @@ img {
 *{
     hyphens: auto;
 }
+
+/** ref module **/
+
+.inputLine th{
+    padding-left: 3px;
+}
+
+
+p.list{
+    margin-bottom: 2px;
+}

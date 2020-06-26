@@ -8,13 +8,14 @@ use Contao\FrontendUser;
 use Contao\Module;
 use Contao\System;
 use Patchwork\Utf8;
+use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
-class ReferenceListModule extends Module
+class HomeWorkFormModule extends Module
 {
     /**
      * @var string
      */
-    protected $strTemplate = 'mod_referenceList';
+    protected $strTemplate = 'mod_homework_form';
 
     /**
      * Displays a wildcard in the back end.
@@ -45,32 +46,23 @@ class ReferenceListModule extends Module
         $csrfManager = System::getContainer()->get('contao.csrf.token_manager');
         $objUser     = FrontendUser::getInstance();
         $formBuilder = new FormBuilder();
-        $form        = $formBuilder->buildRefForm($objUser->id);
-        $form->getWidget('year')->addAttribute('size', 4);
+        $form        = $formBuilder->buildWorkForm($objUser->id);
+        if ($form->validate()) {
+            $arrData            = $form->fetchAll();
 
-        $userRef = ReferenceModel::findRefByUser($objUser->id);
+            $userEntry = ReferenceModel::findRefByUser($objUser->id);
+            if(empty($userEntry)){
+                throw new NotFoundResourceException();
+            }
+            $userEntry->pid = $objUser->id;
+            $userEntry->q1  = $arrData['q1'];
+            $userEntry->q2  = $arrData['q2'];
+            $userEntry->q3  = $arrData['q3'];
+            $userEntry->save();
+        }
 
-        $this->Template->noEntry     = true;
-        $this->Template->userRow     = ReferenceModel::findAllAsArray();
-        $this->Template->refForm     = $form;
+        $this->Template->homeWorkForm     = $form;
         $this->Template->requstToken = $csrfManager->getToken($form->getFormId());
 
-        if ($form->validate() && !$userRef) {
-            $arrData            = $form->fetchAll();
-            $refObj             = new ReferenceModel();
-            $refObj->ref_year   = $arrData['year'];
-            $refObj->ref_author = $arrData['author'];
-            $refObj->ref_title  = $arrData['title'];
-            $refObj->pid        = $objUser->id;
-            $refObj->tstamp     = time();
-            $refObj->save();
-            $userRef = $refObj;
-            $this->Template->noEntry = false;
-        }
-
-        if ($userRef) {
-            $this->Template->noEntry = false;
-            $this->Template->userRef = $userRef;
-        }
     }
 }
