@@ -29,7 +29,7 @@ class ReferenceModel extends Model
         $result = static::findAll($arrOptions);
 
         if(!$result){
-            return [$result];
+            return [];
         }
 
         return $result;
