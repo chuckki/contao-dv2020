@@ -2,9 +2,9 @@
 
 <?php if($this->noEntry): ?>
 <div class="ce_text">
-  <h3>Artikelauswahl</h3>
+  <h3>Anmeldung des zu bearbeitenden Artikels</h3>
   <p>
-    Nachfolgend haben Sie die Möglichkeit für die Hausarbeit Ihren zu bearbeitenden Artikel einzureichen. Beachten Sie, dass jeder Artikel nur einmal eingereicht werden darf.
+    Nachfolgend haben Sie die Möglichkeit, Ihren selbstgewählten Artikel für die Hausarbeit anzumelden. Beachten Sie, dass jeder Artikel nur einmal angemeldet werden kann. Unterhalb der Eingabefelder finden Sie eine Liste von Artikeln, die bereits angemeldet wurden. Sollte ein von Ihnen ausgewählter Artikel bereits in dieser Liste aufgeführt sein, entscheiden Sie sich bitte für einen anderen Artikel.
   </p>
 <form id="<?= $this->refForm->getFormId() ?>" method="post">
   <input type="hidden" name="REQUEST_TOKEN" value="{{REQUEST_TOKEN}}">
@@ -37,6 +37,16 @@
 
   </thead>
   <tbody id="myTable">
+
+<tr><td>2003</td><td>Krahé</td><td>Verfälschungstendenzen im NEO-FFI - Eine experimentelle Überprüfung</td></tr>
+<tr><td>2004</td><td>Schmidt-Atzert</td><td>Erkennen von Simulation und Dissimulation im Test d2</td></tr>
+<tr><td>2006</td><td>Kim</td><td>Can we trust creativity tests- A review of the Torrance Tests of Creative Thinking (TTCT)</td></tr>
+<tr><td>2007</td><td>Woo</td><td>Latent Mean Differences in Facets of Achievement Motivation of Students and Adult Workers in the US</td></tr>
+<tr><td>2010</td><td>Zettler</td><td>Honesty-Humility and a Person-Situation Interaction at Work</td></tr>
+<tr><td>2010</td><td>Steinmayr</td><td>Do sex differences in a faceted model of fluid and crystallized intelligence depend on the method applied</td></tr>
+<tr><td>2014</td><td>Landmann</td><td>Entwicklung von 130 deutschsprachigen Compound Remote Associate (CRA)-Worträtseln zur Untersuchung kreativer Prozesse im deutschen Sprachraum</td></tr>
+<tr><td>2018</td><td>Kowalski</td><td>Dark Triad Traits and Intelligence</td></tr>
+
   <?php foreach ($this->userRow as $row): ?>
     <tr>
       <td><?= $row->ref_year ?></td>
@@ -50,10 +60,37 @@
 </div>
 <div role="alert" id="freeArt" class="alert alert-success justify-content-between align-items-center">
   Dieser Artikel wurde bisher noch nicht angemeldet.
-  <button type="submit" class="btn btn-success right">Artikel jetzt einreichen</button>
+  <button type="button" class="btn btn-success right" data-toggle="modal" data-target="#modalArtikel">Artikel jetzt einreichen</button>
 </div>
 
 </form>
+
+
+
+      <div class="modal fade" id="modalArtikel" tabindex="-1" role="dialog" aria-labelledby="modalArtikel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalArtikelLabel">Artikel jetzt einreichen</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Sind Sie sicher, dass Sie diesen Artikel für sich anmelden möchten? Die Anmeldung kann nicht rückgängig gemacht werden; stellen Sie also vor der Bestätigung sicher, dass der Artikel alle oben genannten Kriterien erfüllt und dass Sie genau diesen Artikel in Ihrer Hausarbeit bearbeiten möchten.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Artikel bearbeiten</button>
+              <button onclick="$('#modal<?= $counter?>').modal('hide');document.getElementById('<?= $this->refForm->getFormId() ?>').submit();" class="btn btn-success" >Artikel jetzt einreichen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
 <script>
     function myFunction() {
@@ -116,8 +153,8 @@
 <?php else: ?>
 <div class="ce_text">
 <h3>Ihr Artikel</h3>
-<p>  Dieser Artikel wurde von Ihnen angemeldet:
-  <strong><?= $this->userRef->ref_author ?> (<?= $this->userRef->ref_year ?>) <i><?= $this->userRef->ref_title ?></i></strong>
-</p>
+
+Sie haben den Artikel "<?= $this->userRef->ref_author ?> (<?= $this->userRef->ref_year ?>) <?= $this->userRef->ref_title ?>" angemeldet. Der Bearbeitungszeitraum für die Hausarbeit beginnt am 14. Juli 2020. Ab diesem Tag werden die zu bearbeitenden Fragen an dieser Stelle verfügbar sein. Die Bearbeitungszeit endet am 28. Juli 2020 um 23:59 Uhr.
+
 </div>
 <?php endif; ?>
