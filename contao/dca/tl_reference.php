@@ -90,6 +90,42 @@ $GLOBALS['TL_DCA']['tl_reference']['fields']['q3'] = array(
     'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
     'sql'         => "mediumtext NULL",
 );
+$GLOBALS['TL_DCA']['tl_reference']['fields']['q4'] = array(
+    'exclude'     => true,
+    'search'      => true,
+    'inputType'   => 'textarea',
+    'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
+    'sql'         => "mediumtext NULL",
+);
+$GLOBALS['TL_DCA']['tl_reference']['fields']['q5'] = array(
+    'exclude'     => true,
+    'search'      => true,
+    'inputType'   => 'textarea',
+    'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
+    'sql'         => "mediumtext NULL",
+);
+$GLOBALS['TL_DCA']['tl_reference']['fields']['q6'] = array(
+    'exclude'     => true,
+    'search'      => true,
+    'inputType'   => 'textarea',
+    'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
+    'sql'         => "mediumtext NULL",
+);
+$GLOBALS['TL_DCA']['tl_reference']['fields']['q7'] = array(
+    'exclude'     => true,
+    'search'      => true,
+    'inputType'   => 'textarea',
+    'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
+    'sql'         => "mediumtext NULL",
+);
+$GLOBALS['TL_DCA']['tl_reference']['fields']['q8'] = array(
+    'exclude'     => true,
+    'search'      => true,
+    'inputType'   => 'textarea',
+    'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
+    'sql'         => "mediumtext NULL",
+);
+$GLOBALS['TL_DCA']['tl_reference']['fields']['q9'] = array(
     'exclude'     => true,
     'search'      => true,
     'inputType'   => 'textarea',
