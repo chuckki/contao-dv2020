@@ -90,3 +90,9 @@ $GLOBALS['TL_DCA']['tl_reference']['fields']['q3'] = array(
     'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
     'sql'         => "mediumtext NULL",
 );
+    'exclude'     => true,
+    'search'      => true,
+    'inputType'   => 'textarea',
+    'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
+    'sql'         => "mediumtext NULL",
+);

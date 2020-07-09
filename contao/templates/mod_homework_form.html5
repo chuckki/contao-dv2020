@@ -1,25 +1,131 @@
+<?php if ($this->showForm):?>
+<style>
+  .cred {
+    background: #a92222;
+    color: white;
+    padding: 0 5px;
+  }
 
-<div class="jumbotron">
-<form id="<?= $this->formId ?>" method="post" novalidate>
-  <input type="hidden" name="REQUEST_TOKEN" value="{{REQUEST_TOKEN}}">
-  <input type="hidden" name="FORM_SUBMIT" value="<?= $this->homeWorkForm->getFormId(); ?>">
+  .cgreen {
+    color: #4f9f4f;
+  }
 
-    <?php
-    /** @var $form \Haste\Form\Form */
-    $form = $this->homeWorkForm;
+  label {
+    font-weight: bold;
+  }
 
-    /** @var FormTextArea $tf */
-    $tf = $this->homeWorkForm->getWidget('q1');
-    ?>
+  .help p {
+    margin-bottom: 0;
+  }
 
-  <?php foreach ($form->getWidgets() as $widget): ?>
-  <div class="form-group">
-      <label for="<?= $widget->id ?>" class="mandatory"><?= $widget->label ?> </label>
-      <?= $widget->generate() ?>
+  .example {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 5px 0;
+  }
+
+  .example i {
+    hyphens: none;
+    margin-right: 10px;
+  }
+
+  .wordCounter {
+    font-size: 12px;
+    color: #888;
+    text-align: right;
+  }
+
+  .homework .form-group {
+    margin-bottom: 1.5rem;
+  }
+</style>
+
+  <div class="jumbotron">
+    <form id="<?= $this->homeWorkForm->getFormId() ?>" method="post" novalidate class="homework">
+      <input type="hidden" name="REQUEST_TOKEN" value="{{REQUEST_TOKEN}}">
+      <input type="hidden" name="FORM_SUBMIT" value="<?= $this->homeWorkForm->getFormId() ?>">
+
+        <?php
+        /** @var $form \Haste\Form\Form */
+        $form = $this->homeWorkForm;
+        ?>
+
+        <?php foreach ($form->getWidgets() as $widget): ?>
+          <div class="form-group">
+              <?php
+              if(!empty($this->questionArray[$widget->id])){
+                $qArray = $this->questionArray[$widget->id];
+                ?>
+                <label for="ctrl_<?= $widget->id ?>" class="mandatory"><?php if($qArray['list']){echo $qArray['list'] . '. ';} ?><?= $widget->label ?> </label>
+                <?php
+                  echo '<div class="help">'.$qArray['help'].'</div>';
+                  if ($qArray['list']) {
+                      if (!$qArray['count']) {
+                          echo '<div class="wordCounter">Keine Empfehlung für den Umfang, stark abhängig vom gewählten Artikel</div>';
+                      } else {
+                          echo '<div class="wordCounter" >Empfehlung für den Umfang: etwa '.$qArray['count']['min']
+                               .' bis '.$qArray['count']['max'].' Wörter<br>';
+                          echo '<span class="wordCounterLabel" id="charNum_ctrl_'.$widget->id.'" data-min="'
+                               .$qArray['count']['min'].'" data-max="'.$qArray['count']['max']
+                               .'">Aktuell 0 Wörter</span>';
+                          echo '</div>';
+                      }
+                  }
+              }
+              ?>
+
+            <textarea onkeyup="countChar(this)" name="<?= $widget->name ?>"
+                      id="ctrl_<?= $widget->id ?>" class="textarea form-control" rows="<?= $widget->rows ?>"
+                      cols="<?= $widget->cols ?>" placeholder=""><?php echo $widget->value; ?></textarea>
+          </div>
+        <?php endforeach; ?>
+
+      <button type="submit" class="btn btn-success float_right">Eingabe Speichern</button>
+
+    </form>
   </div>
-  <?php endforeach; ?>
+    <script>
+        function countChar(val) {
+            let len = 0;
+            let el = '#charNum_' + val.id;
+            let words = $(val).val().replace(/[^_0-9a-zA-Z]/g, " ").trim().split(/\s+/);
 
-    <button type="submit" class="btn btn-success float_right">Eingabe Speichern</button>
+            if(words !== '' && $(val).val() !== ''){
+              len = words.length;
+            }
 
-</form>
-</div>
+            $(el).text('Aktuell ' + len + ' Wörter');
+
+            let min = $(el).data('min');
+            let max = $(el).data('max');
+
+            if(len < min){
+                $(el).removeClass('cred');
+                $(el).removeClass('cgreen');
+            }
+            if(len >= min && len <= max) {
+                $(el).removeClass('cred');
+                $(el).addClass('cgreen');
+            }
+            if(len > max){
+                $(el).addClass('cred');
+                $(el).removeClass('cgreen');
+            }
+
+        }
+
+        $(document).ready(
+            $("textarea").each(function(index) {
+                countChar(this);
+            })
+        )
+    </script>
+<?php
+else:
+    ?>
+  <div class="jumbotron">
+    <p>Keine Eingabe möglich</p>
+  </div>
+<?php
+endif;
+?>

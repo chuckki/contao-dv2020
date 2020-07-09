@@ -14,6 +14,12 @@ use Contao\Model;
  * @property string  $q1
  * @property string  $q2
  * @property string  $q3
+ * @property string  $q4
+ * @property string  $q5
+ * @property string  $q6
+ * @property string  $q7
+ * @property string  $q8
+ * @property string  $q9
  */
 class ReferenceModel extends Model
 {

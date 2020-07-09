@@ -17,6 +17,12 @@ class FormBuilder
         $q1 = $userEntry->q1 ?? '';
         $q2 = $userEntry->q2 ?? '';
         $q3 = $userEntry->q3 ?? '';
+        $q4 = $userEntry->q4 ?? '';
+        $q5 = $userEntry->q5 ?? '';
+        $q6 = $userEntry->q6 ?? '';
+        $q7 = $userEntry->q7 ?? '';
+        $q8 = $userEntry->q8 ?? '';
+        $q9 = $userEntry->q9 ?? '';
 
 
         $objForm = new Form('homework_' . $userId, 'POST', function ($objHaste) {
@@ -25,10 +31,10 @@ class FormBuilder
 
         $objForm->addFormField('q1',array(
             'default'   => $q1,
-            'label'     => 'Wie lautet die vollständige Zitation des Artikels nach dem American Psychological Association (APA)-Format?',
+            'label'     => 'Wie lautet die vollständige Literaturangabe des von Ihnen behandelten Artikels im APA-Format (6. Auflage)?',
             'inputType' => 'textarea',
             'eval' => array(
-                'placeholder' => 'max. 120 Zeichen',
+                'placeholder' => '',
                 'class'       => 'form-control',
                 'size'        => 4,
                 'cols'        => 40,
@@ -38,10 +44,10 @@ class FormBuilder
 
         $objForm->addFormField('q2',array(
             'default'   => $q2,
-            'label'     => 'Welche Ergebnisse wurde gefunden?',
+            'label'     => 'Zu welchem diagnostischen Verfahren steht der von Ihnen behandelte Artikel in starkem Bezug?',
             'inputType' => 'textarea',
             'eval' => array(
-                'placeholder' => 'max. 120 Zeichen',
+                'placeholder' => '',
                 'class'       => 'form-control',
                 'size'        => 4,
                 'cols'        => 40,
@@ -51,10 +57,10 @@ class FormBuilder
 
         $objForm->addFormField('q3',array(
             'default'   => $q3,
-            'label'     => 'Welche Kritik könnte man über das Design der Studie anbringen?',
+            'label'     => 'Welches Konstrukt bzw. welche Konstrukte soll bzw. sollen mit diesem diagnostischen Verfahren gemessen werden?',
             'inputType' => 'textarea',
             'eval' => array(
-                'placeholder' => 'max. 120 Zeichen',
+                'placeholder' => '',
                 'class'       => 'form-control',
                 'size'        => 4,
                 'cols'        => 40,
@@ -62,11 +68,88 @@ class FormBuilder
             ),
         ));
 
-        $objForm->addFormField('submission',array(
-            'default'   => '',
-            'inputType' => 'checkbox',
-            'label'         => array('', 'Abgabe endgültig einreichen. Halten Sie dazu Ihre Matrikelnummer bereit.'),
 
+        $objForm->addFormField('q4',array(
+            'default'   => $q4,
+            'label'     => 'Was waren die zentralen Forschungsfragen in dem von Ihnen behandelten Artikel? Wie haben die Autoren diese hergeleitet?',
+            'inputType' => 'textarea',
+            'eval' => array(
+                'placeholder' => '',
+                'class'       => 'form-control',
+                'size'        => 4,
+                'cols'        => 40,
+                'rows'        => 4,
+            ),
+        ));
+
+
+        $objForm->addFormField('q5',array(
+            'default'   => $q5,
+            'label'     => 'Was waren die zentralen Ergebnisse? Wie interpretieren die Autoren diese Ergebnisse?',
+            'inputType' => 'textarea',
+            'eval' => array(
+                'placeholder' => '',
+                'class'       => 'form-control',
+                'size'        => 4,
+                'cols'        => 40,
+                'rows'        => 4,
+            ),
+        ));
+
+
+        $objForm->addFormField('q6',array(
+            'default'   => $q6,
+            'label'     => 'Was sind die drei aus Ihrer Sicht wichtigsten Kritikpunkte an dem von Ihnen behandelten Artikel? Welche Probleme ergeben sich aus diesen Kritikpunkten?',
+            'inputType' => 'textarea',
+            'eval' => array(
+                'placeholder' => '',
+                'class'       => 'form-control',
+                'size'        => 4,
+                'cols'        => 40,
+                'rows'        => 4,
+            ),
+        ));
+
+
+        $objForm->addFormField('q7',array(
+            'default'   => $q7,
+            'label'     => 'Wie ließe sich diesen Kritikpunkten im Rahmen einer empirischen Studie begegnen?',
+            'inputType' => 'textarea',
+            'eval' => array(
+                'placeholder' => '',
+                'class'       => 'form-control',
+                'size'        => 4,
+                'cols'        => 40,
+                'rows'        => 4,
+            ),
+        ));
+
+
+        $objForm->addFormField('q8',array(
+            'default'   => $q8,
+            'label'     => 'Abschließender Kommentar',
+            'inputType' => 'textarea',
+            'eval' => array(
+                'placeholder' => '',
+                'class'       => 'form-control',
+                'size'        => 4,
+                'cols'        => 40,
+                'rows'        => 4,
+            ),
+        ));
+
+
+        $objForm->addFormField('q9',array(
+            'default'   => $q9,
+            'label'     => 'Codewort für die anonymisierte Ergebnisrückmeldung',
+            'inputType' => 'text',
+            'eval' => array(
+                'placeholder' => '',
+                'class'       => 'form-control',
+                'size'        => 4,
+                'cols'        => 40,
+                'rows'        => 1,
+            ),
         ));
 
         return $objForm;
