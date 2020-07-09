@@ -2,7 +2,9 @@
 
 namespace App\InsertTag;
 
+use App\Model\ReferenceModel;
 use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\FrontendUser;
 use Terminal42\ServiceAnnotationBundle\ServiceAnnotationInterface;
 
 class ReplaceInsertTagsListener implements ServiceAnnotationInterface
@@ -23,6 +25,12 @@ class ReplaceInsertTagsListener implements ServiceAnnotationInterface
     {
         if ('cookieDay' === $insertTag) {
             return date_diff(date_create('2020-07-18'), date_create())->format('%a');
+        }
+
+        if ('refArticel' === $insertTag) {
+                $objUser     = FrontendUser::getInstance();
+                $userRef = ReferenceModel::findRefByUser($objUser->id);
+                return $userRef->ref_author . ' (' . $userRef->ref_year . ') ' . $userRef->ref_title;
         }
 
         return false;
