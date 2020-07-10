@@ -73,10 +73,8 @@
                   }
               }
               ?>
+              <?= $widget->generate() ?>
 
-            <textarea onkeyup="countChar(this)" name="<?= $widget->name ?>"
-                      id="ctrl_<?= $widget->id ?>" class="textarea form-control" rows="<?= $widget->rows ?>"
-                      cols="<?= $widget->cols ?>" placeholder=""><?php echo $widget->value; ?></textarea>
           </div>
         <?php endforeach; ?>
 

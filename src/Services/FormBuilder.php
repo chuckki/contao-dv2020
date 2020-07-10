@@ -61,6 +61,7 @@ class FormBuilder
             'inputType' => 'textarea',
             'eval' => array(
                 'placeholder' => '',
+                'onkeyup'     => 'countChar(this)',
                 'class'       => 'form-control',
                 'size'        => 4,
                 'cols'        => 40,
@@ -75,6 +76,7 @@ class FormBuilder
             'inputType' => 'textarea',
             'eval' => array(
                 'placeholder' => '',
+                'onkeyup'     => 'countChar(this)',
                 'class'       => 'form-control',
                 'size'        => 4,
                 'cols'        => 40,
@@ -89,6 +91,7 @@ class FormBuilder
             'inputType' => 'textarea',
             'eval' => array(
                 'placeholder' => '',
+                'onkeyup'     => 'countChar(this)',
                 'class'       => 'form-control',
                 'size'        => 4,
                 'cols'        => 40,
@@ -103,6 +106,7 @@ class FormBuilder
             'inputType' => 'textarea',
             'eval' => array(
                 'placeholder' => '',
+                'onkeyup'     => 'countChar(this)',
                 'class'       => 'form-control',
                 'size'        => 4,
                 'cols'        => 40,
@@ -117,6 +121,7 @@ class FormBuilder
             'inputType' => 'textarea',
             'eval' => array(
                 'placeholder' => '',
+                'onkeyup'     => 'countChar(this)',
                 'class'       => 'form-control',
                 'size'        => 4,
                 'cols'        => 40,
