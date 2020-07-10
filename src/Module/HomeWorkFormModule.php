@@ -5,6 +5,7 @@ namespace App\Module;
 use App\Model\ReferenceModel;
 use App\Services\FormBuilder;
 use Contao\FrontendUser;
+use Contao\Input;
 use Contao\Module;
 use Contao\System;
 use Patchwork\Utf8;
@@ -133,6 +134,10 @@ class HomeWorkFormModule extends Module
             $userEntry->q8  = $arrData['q8'];
             $userEntry->q9  = $arrData['q9'];
             $userEntry->save();
+            if (Input::postRaw('autosave') === "1") {
+                die(true);
+            }
+
         }
 
         $this->Template->homeWorkForm     = $form;

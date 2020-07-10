@@ -1,5 +1,14 @@
 <?php if ($this->showForm):?>
 <style>
+  #success-alert{
+    display: none;
+    z-index: 234234;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
   .cred {
     background: #a92222;
     color: white;
@@ -39,6 +48,11 @@
     margin-bottom: 1.5rem;
   }
 </style>
+
+<div style="display: none;" class="alert alert-success" id="success-alert">
+  <button type="button" class="close" data-dismiss="alert">x</button>
+  <strong>Gespeichert! </strong> Ihre Eingabe wurde automatisch gespeichert.
+</div>
 
   <div class="jumbotron">
     <form id="<?= $this->homeWorkForm->getFormId() ?>" method="post" novalidate class="homework">
@@ -83,6 +97,13 @@
     </form>
   </div>
     <script>
+
+        function showAlert() {
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").slideUp(500);
+            });
+        }
+
         function countChar(val) {
             let len = 0;
             let el = '#charNum_' + val.id;
@@ -110,13 +131,33 @@
                 $(el).removeClass('cgreen');
             }
 
-        }
+        };
 
         $(document).ready(
             $("textarea").each(function(index) {
                 countChar(this);
             })
-        )
+        );
+
+        setInterval(sendForm, 300000);
+
+        function sendForm() {
+            var submittedData = $('#<?= $this->homeWorkForm->getFormId() ?>').serialize();
+            submittedData = submittedData + '&autosave=1';
+
+            jQuery.post({
+                url: window.location.href,
+                type: 'POST',
+                data: submittedData,
+                success: function (data, textStatus, jqXHR) {
+                    if(data === "1"){
+                        showAlert();
+                    }
+                }
+            });
+            return true;
+        }
+
     </script>
 <?php
 else:
