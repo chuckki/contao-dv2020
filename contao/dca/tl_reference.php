@@ -132,3 +132,10 @@ $GLOBALS['TL_DCA']['tl_reference']['fields']['q9'] = array(
     'eval'        => array('mandatory' => true, 'rte' => 'tinyMCE', 'helpwizard' => true),
     'sql'         => "mediumtext NULL",
 );
+$GLOBALS['TL_DCA']['tl_reference']['fields']['autosave'] = array(
+    'exclude'   => true,
+    'inputType' => 'checkbox',
+    'eval'      => array('tl_class' => 'w50'),
+    'sql'       => "char(1) NOT NULL default ''",
+);
+

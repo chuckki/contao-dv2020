@@ -134,8 +134,11 @@ class HomeWorkFormModule extends Module
             $userEntry->q8  = $arrData['q8'];
             $userEntry->q9  = $arrData['q9'];
             $userEntry->save();
-            if (Input::postRaw('autosave') === "1") {
-                die(true);
+            if (Input::postRaw('autosave') === '1'){
+                if($userEntry->autosave){
+                    die(true);
+                }
+                die(false);
             }
 
         }

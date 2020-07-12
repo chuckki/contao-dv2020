@@ -51,7 +51,9 @@
 
 <div style="display: none;" class="alert alert-success" id="success-alert">
   <button type="button" class="close" data-dismiss="alert">x</button>
+  <div id="alertmsg" style="text-align: center;">
   <strong>Gespeichert! </strong> Ihre Eingabe wurde automatisch gespeichert.
+    </div>
 </div>
 
   <div class="jumbotron">
@@ -98,8 +100,15 @@
   </div>
     <script>
 
-        function showAlert() {
-            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+        function showAlert(msg = '') {
+            if (msg === '') {
+                $('#alertmsg').html(
+                    "<strong> Gespeichert! </strong> Ihre Eingabe wurde automatisch gespeichert.");
+            } else {
+                $('#alertmsg').html(msg);
+            }
+
+            $("#success-alert").fadeTo(4000, 500).slideUp(500, function () {
                 $("#success-alert").slideUp(500);
             });
         }
@@ -142,20 +151,22 @@
         setInterval(sendForm, 300000);
 
         function sendForm() {
-            var submittedData = $('#<?= $this->homeWorkForm->getFormId() ?>').serialize();
-            submittedData = submittedData + '&autosave=1';
+            if (isAutoSaveOn === 1) {
+                var submittedData = $('#<?= $this->homeWorkForm->getFormId() ?>').serialize();
+                submittedData = submittedData + '&autosave=1';
 
-            jQuery.post({
-                url: window.location.href,
-                type: 'POST',
-                data: submittedData,
-                success: function (data, textStatus, jqXHR) {
-                    if(data === "1"){
-                        showAlert();
+                jQuery.post({
+                    url: window.location.href,
+                    type: 'POST',
+                    data: submittedData,
+                    success: function (data, textStatus, jqXHR) {
+                        if (data === "1") {
+                            showAlert();
+                        }
                     }
-                }
-            });
-            return true;
+                });
+                return true;
+            }
         }
 
     </script>

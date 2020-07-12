@@ -20,6 +20,7 @@ use Contao\Model;
  * @property string  $q7
  * @property string  $q8
  * @property string  $q9
+ * @property boolean  $autosave
  */
 class ReferenceModel extends Model
 {
