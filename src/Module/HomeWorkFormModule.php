@@ -78,7 +78,7 @@ class HomeWorkFormModule extends Module
             ),
             'q5' => array(
                 'list' => 5,
-                'help'  => '<p>Konzentrieren Sie sich in Ihrer Antwort auf die wichtigsten Ergebnisse mit Bezug zu den zentralen Forschungsfragen beitragen, und ignorieren Sie weniger wichtige Nebenergebnisse. Beschreiben Sie die Ergebnisse inhaltlich und verzichten Sie soweit wie möglich auf deskriptive oder inferenzstatistische Kennwerte. Halten Sie sich an die Interpretation, welche die Autoren selbst im Artikel liefern.</p>',
+                'help'  => '<p>Konzentrieren Sie sich in Ihrer Antwort auf die wichtigsten Ergebnisse mit Bezug zu den zentralen Forschungsfragen und ignorieren Sie weniger wichtige Nebenergebnisse. Beschreiben Sie die Ergebnisse inhaltlich und verzichten Sie soweit wie möglich auf deskriptive oder inferenzstatistische Kennwerte. Halten Sie sich an die Interpretation, welche die Autoren selbst im Artikel liefern.</p>',
                 'count' => array(
                     'min' => 200,
                     'max' => 500,
