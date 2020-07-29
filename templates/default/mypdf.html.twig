@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+<style type="text/css">
+@page {
+	margin: 1cm;
+}
+body {
+  font-family: sans-serif;
+	margin: 1cm 0 0;
+	text-align: justify;
+}
+    #header,
+#footer {
+  position: fixed;
+  left: 0;
+	right: 0;
+	color: #aaa;
+	font-size: 0.9em;
+}
+
+#header {
+  top: 0;
+	border-bottom: 0.1pt solid #aaa;
+}
+
+#footer {
+  bottom: 0;
+  border-top: 0.1pt solid #aaa;
+}
+
+#header table,
+#footer table {
+	width: 100%;
+	border-collapse: collapse;
+	border: none;
+}
+
+#header td,
+#footer td {
+  padding: 0;
+	width: 50%;
+}
+
+.page-number {
+  text-align: center;
+}
+
+.page-number:before {
+  content: "Seite " counter(page);
+}
+
+hr {
+  page-break-after: always;
+  border: 0;
+}
+
+</style>
+</head>
+<body>
+
+<div id="header">
+  <table>
+    <tr>
+      <td>Hausarbeit DV2020 T1 28.07.2020</td>
+      <td style="text-align: right;">{{ email }}</td>
+    </tr>
+  </table>
+</div>
+
+<div id="footer">
+  <div class="page-number"></div>
+</div>
+
+
+<p style="color:#888888;">
+1. Wie lautet die vollständige Literaturangabe des von Ihnen behandelten Artikels im APA-Format (6. Auflage)?
+</p>
+<div>{{ q1 }}</div>
+
+<p style="color:#888888;">
+2. Zu welchem diagnostischen Verfahren steht der von Ihnen behandelte Artikel in starkem Bezug?
+</p>
+<div>{{ q2 }}</div>
+
+
+<p style="color:#888888;">
+3. Welches Konstrukt bzw. welche Konstrukte soll bzw. sollen mit diesem diagnostischen Verfahren gemessen werden?
+</p>
+<div>{{ q3 }}</div>
+
+<p style="color:#888888;">
+4. Was waren die zentralen Forschungsfragen in dem von Ihnen behandelten Artikel? Wie haben die Autoren diese hergeleitet?
+</p>
+<div>{{ q4 }}</div>
+
+<p style="color:#888888;">
+5. Was waren die zentralen Ergebnisse? Wie interpretieren die Autoren diese Ergebnisse?
+</p>
+<div>{{ q5 }}</div>
+
+<p style="color:#888888;">
+6. Was sind die drei aus Ihrer Sicht wichtigsten Kritikpunkte an dem von Ihnen behandelten Artikel? Welche Probleme ergeben sich aus diesen Kritikpunkten?
+</p>
+<div>{{ q6 }}</div>
+
+<p style="color:#888888;">
+7. Wie ließe sich diesen Kritikpunkten im Rahmen einer empirischen Studie begegnen?
+</p>
+<div>{{ q7 }}</div>
+
+
+<p style="color:#888888;">
+Abschließender Kommentar
+</p>
+<div>{{ q8 }}</div>
+
+<p style="color:#888888;">
+Codewort für die anonymisierte Ergebnisrückmeldung </p>
+<div>{{ q9 }}</div>
+
+
+
+</body></html>
