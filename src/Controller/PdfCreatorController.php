@@ -34,15 +34,15 @@ class PdfCreatorController extends AbstractController
             $userref = ReferenceModel::findRefByUser($ref->pid);
             $member  = \MemberModel::findById($ref->pid);
             $email   = $member->email;
-            $q1      = html_entity_decode($userref->q1);
-            $q2      = html_entity_decode($userref->q2);
-            $q3      = html_entity_decode($userref->q3);
-            $q4      = html_entity_decode($userref->q4);
-            $q5      = html_entity_decode($userref->q5);
-            $q6      = html_entity_decode($userref->q6);
-            $q7      = html_entity_decode($userref->q7);
-            $q8      = html_entity_decode($userref->q8);
-            $q9      = html_entity_decode($userref->q9);
+            $q1      = nl2br($userref->q1);
+            $q2      = nl2br($userref->q2);
+            $q3      = nl2br($userref->q3);
+            $q4      = nl2br($userref->q4);
+            $q5      = nl2br($userref->q5);
+            $q6      = nl2br($userref->q6);
+            $q7      = nl2br($userref->q7);
+            $q8      = nl2br($userref->q8);
+            $q9      = nl2br($userref->q9);
             // Configure Dompdf according to your needs
             $pdfOptions = new Options();
             $pdfOptions->set('defaultFont', 'Arial');
