@@ -10,24 +10,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Kernel;
+use Contao\CoreBundle\Security\Authentication\Token\TokenChecker;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PdfCreatorController extends AbstractController
 {
+    private $tokenChecker;
 
-    public function __construct(ContaoFramework $contaoFramework)
+    public function __construct(ContaoFramework $contaoFramework, TokenChecker $tokenChecker)
     {
         $contaoFramework->initialize(true);
+        $this->tokenChecker = $tokenChecker;
     }
 
-
     /**
-     * @Route("/getPDF", name="app_pdf", methods={"GET"})
+     * @Route("/getPDF/{id}/{directoryName}", name="app_pdf", methods={"GET"})
      */
-    public function index2Action()
+    public function index2Action(int $id = 0, string $directoryName = 'pdf')
     {
-        $userRef = ReferenceModel::findAll();
+        // check if backenduser is logged in
+        if (!$this->tokenChecker->hasBackendUser()) {
+            return new Response('User not found.',403);
+        }
+
+        $userRef = ReferenceModel::findBy(['id >= ?'],[$id]);
         foreach ($userRef as $ref)
         {
             // get memberData
@@ -76,19 +82,23 @@ class PdfCreatorController extends AbstractController
             // Store PDF Binary Data
             $output = $dompdf->output();
 
-            $publicDirectory = $this->getParameter('kernel.project_dir') . '/web/pdf';
+            $publicDirectory = $this->getParameter('kernel.project_dir') . '/web/' . $directoryName;
             $filesystem      = new Filesystem();
             try {
                 $filesystem->mkdir($publicDirectory.'/'.$email);
             } catch (IOExceptionInterface $exception) {
                 echo "An error occurred while creating your directory at ".$exception->getPath();
             }
-            $pdfFilepath = $publicDirectory.'/'.$email.'/DV2020-T1-'.$email.'.pdf';
+            $pdfFilepath = $publicDirectory.'/'.$email.'/DV2020-T3-'.$email.'.pdf';
             // Write file to the desired path
             file_put_contents($pdfFilepath, $output);
         }
 
-        return new Response("The PDF file has been succesfully generated !");
+        // build tarball
+        system('cd ' . $this->getParameter('kernel.project_dir') . '/web/' . '&& tar cfz '. $directoryName .'.tar.gz ' . $directoryName);
+
+        $link = '<a href="/'.$directoryName .'.tar.gz">donwload</a>';
+        return new Response("The PDF file has been succesfully generated: ". $link);
     }
 
 }
