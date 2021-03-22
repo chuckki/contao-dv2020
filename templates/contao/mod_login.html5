@@ -2,7 +2,7 @@
 <!-- indexer::stop -->
 <div class="text-center <?= $this->class ?> <?= $this->logout ? 'logout' : 'login' ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
 
-  <h1 class="h3 mb-3 font-weight-normal">DV Seminar So2020</h1>
+  <h1 class="h3 mb-3 font-weight-normal">DV Seminar So2021</h1>
 
   <form<?php if ($this->action): ?> action="<?= $this->action ?>"<?php endif; ?> id="<?= $this->formId ?>" method="post" class="form-signin">
     <div class="formbody">

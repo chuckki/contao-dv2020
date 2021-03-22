@@ -1,7 +1,7 @@
 
 <!-- indexer::stop -->
 <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top <?= $this->class ?>"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?> itemscope itemtype="http://schema.org/SiteNavigationElement">
-  <a class="navbar-brand" href="/"><img src="/files/diagdiff-theme/img/uni_duesseldorf_logo.svg" alt="Seminar Diagnostische Verfahren 2020 der HHU Düsseldorf" style="width: 150px;" class="img-responsive" width="150" height="36"></a>
+  <a class="navbar-brand" href="/"><img src="/files/diagdiff-theme/img/uni_duesseldorf_logo.svg" alt="Seminar Diagnostische Verfahren 2021 der HHU Düsseldorf" style="width: 150px;" class="img-responsive" width="150" height="36"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

@@ -24,7 +24,7 @@ class ReplaceInsertTagsListener implements ServiceAnnotationInterface
     )
     {
         if ('cookieDay' === $insertTag) {
-            return date_diff(date_create('2020-07-18'), date_create())->format('%a');
+            return date_diff(date_create('2021-07-18'), date_create())->format('%a');
         }
 
         if ('refArticel' === $insertTag) {
