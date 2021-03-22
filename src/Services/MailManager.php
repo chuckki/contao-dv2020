@@ -33,7 +33,7 @@ class MailManager
 
         $subject = sprintf('Ihre Registrierung auf %s', Idna::decode(Environment::get('host')));
 
-        $abs   = new Address('dv2021@diagdiff.online', 'DV2020 Seminar');
+        $abs   = new Address('dv2021@diagdiff.online', 'DV2021 Seminar');
         $email = (new Email())->from($abs)->to($member->email)->replyTo($abs)->subject($subject)->text($reg_text)->html($reg_html);
 
         try {
