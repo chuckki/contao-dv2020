@@ -71,6 +71,8 @@ class ReferenceListModule extends Module
         if ($userRef) {
             $this->Template->noEntry = false;
             $this->Template->userRef = $userRef;
+            $refArtikel = $userRef->ref_author .' ('.$userRef->ref_year .') '. $userRef->ref_title;
+            $this->Template->html = sprintf($this->html, $refArtikel);
         }
     }
 }

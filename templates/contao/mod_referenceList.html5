@@ -32,7 +32,7 @@
       <?= $this->refForm->getWidget('author')->ErrorAsHTML ?>
       <?= $this->refForm->getWidget('author')->generate() ?>
     </th>
-    
+
     <th>
       <?= $this->refForm->getWidget('title')->ErrorAsHTML ?>
       <?= $this->refForm->getWidget('title')->generate() ?>
@@ -162,7 +162,7 @@
 <div class="ce_text">
 <h3>Ihr Artikel</h3>
 
-Sie haben den Artikel "<?= $this->userRef->ref_author ?> (<?= $this->userRef->ref_year ?>) <?= $this->userRef->ref_title ?>" angemeldet. Der Bearbeitungszeitraum für die Hausarbeit beginnt am 12. Februar 2021. Ab diesem Tag werden die zu bearbeitenden Fragen an dieser Stelle verfügbar sein. Die Bearbeitungszeit endet am 26. Februar 2021 um 23:59 Uhr.
+     <?= $this->html ?>
 
 </div>
 <?php endif; ?>
